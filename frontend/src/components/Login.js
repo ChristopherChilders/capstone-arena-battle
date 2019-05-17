@@ -1,4 +1,5 @@
 import React from 'react';
+import style from '../Login.module.css'
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -9,10 +10,11 @@ class Login extends React.Component{
     }
     render() {
         return (
-            <div className="login">
-                <h1 className="login-title">Login</h1>
+            <div className={style.login}>
+                <h1 className={style.loginTitle}>Login</h1>
             <form onSubmit={this.handleSubmit}>
             <label>Email</label>
+            <div className={style.loginInputs}>
                 <input 
                 type="email"
                 placeholder="email"
@@ -24,6 +26,7 @@ class Login extends React.Component{
                 placeholder="password"
                 value={this.state.password}
                 onChange={this.handleChange}/>
+                <div className={style.submitButton}>
                 <button 
                 type="submit"
                 onSubmit={this.handleSubmit}
@@ -31,6 +34,8 @@ class Login extends React.Component{
                 >
                 Submit
                 </button>
+                </div>
+            </div>
             </form>
             </div>
         )
