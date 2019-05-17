@@ -43,7 +43,7 @@ class Player {
     }
     
     static getById(id){
-        return db.one(`select * from players where id=${id}`)
+        return db.one(`select * from players where id=$1`, [id])
         .then((playerData) => {
             const playerInstance = new Player(
                 playerData.id, 
@@ -92,6 +92,7 @@ class Player {
         return bcrypt.compareSync(aPassword, this.password);
     }
 
+    // ask chris about $1 vs ${} here
     updatePassword(){
         return db.result(`
         update players
