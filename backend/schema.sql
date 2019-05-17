@@ -1,4 +1,4 @@
-create table users (
+create table players (
     id serial PRIMARY key,
     username VARCHAR(100),
     email VARCHAR(100),
@@ -30,6 +30,6 @@ create TABLE attacks (
 
 create table users_characters (
     id serial primary key,
-    user_id INTEGER REFERENCES users(id),
+    players_id INTEGER REFERENCES players(id),
     characters_id INTEGER REFERENCES characters(id)
 );

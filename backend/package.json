@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "db:create": "createdb devdepot-app",
-    "db:init": "psql -f schema.sql devdepot-app && psql -f seed.sql devdepot-app",
-    "db:destroy": "dropdb devdepot-app",
+    "db:create": "createdb arenacapstone-app",
+    "db:init": "psql -f schema.sql arenacapstone-app && psql -f seed.sql arenacapstone-app",
+    "db:destroy": "dropdb arenacapstone-app",
     "db:reset": "npm run db:destroy; npm run db:create && npm run db:init",
     "test": "mocha",
     "test:watch": "mocha -w"
@@ -16,12 +16,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChristopherChilders/dev-depot-backend-project.git"
+    "url": "git+https://github.com/ChristopherChilders/capstone-arena-battle.git"
   },
   "bugs": {
-    "url": "https://github.com/ChristopherChilders/dev-depot-backend-project/issues"
+    "url": "https://github.com/ChristopherChilders/capstone-arena-battle/issues"
   },
-  "homepage": "https://github.com/ChristopherChilders/dev-depot-backend-project#readme",
+  "homepage": "https://github.com/ChristopherChilders/capstone-arena-battle#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",

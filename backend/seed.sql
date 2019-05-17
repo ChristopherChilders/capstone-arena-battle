@@ -1,4 +1,4 @@
-insert into users
+insert into players
 (username, email, password, created_at)
 VALUES
 ('player1', 'player@one.com', 'password', '2019-05-17 09:05:35'),
@@ -22,7 +22,7 @@ values
 (3, 'kick', 'kicks target', 20, '', 'enemy');
 
 insert into users_characters 
-(user_id, characters_id)
+(players_id, characters_id)
 VALUES
 (1, 1),
 (1, 2),
