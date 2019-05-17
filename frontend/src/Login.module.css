@@ -1,9 +1,0 @@
-.login {
-    text-align: center;
-}
-.loginInputs{
-    display: flex;
-    flex-direction: column;
-    margin-left: 25%;
-    margin-right: 25%;
-}
