@@ -19,12 +19,14 @@ class Login extends React.Component{
                 type="email"
                 placeholder="email"
                 value={this.state.email}
+                id="email"
                 onChange={this.handleChange}/>
                 <label>Password</label>
                 <input
                 type="password"
                 placeholder="password"
                 value={this.state.password}
+                id="password"
                 onChange={this.handleChange}/>
                 <div className={style.submitButton}>
                 <button 
@@ -40,13 +42,14 @@ class Login extends React.Component{
             </div>
         )
     }
-    handleChange(e) {
-        this.setState({
-            [e.target.id]: e.target.value
-        });
+    handleChange = (e) => {
         console.log("handleChange", e.target.value)
+        this.setState({
+            [e.target.id]: e.target.value,
+            [e.target.id]:e.target.value
+        });
     }
-    handleSubmit(e){
+    handleSubmit =(e) => {
         e.preventDefault()
     }
     // validateForm() {
