@@ -6,6 +6,7 @@ class Navbar extends React.Component {
         return (
             <div className={style.navBar}>
                 <div className={style.navItems}>
+                    <Link to="/">Home</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/registration">Registration</Link>
                 </div>
