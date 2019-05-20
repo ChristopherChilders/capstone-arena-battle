@@ -8,6 +8,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import Navbar from './components/Navbar';
 
 class App extends React.Component{
   constructor(props) {
@@ -19,10 +20,15 @@ class App extends React.Component{
   render() {
     return(
       <div >
-        <Link to="/login">Login</Link>
-        <Route path="/login" component={Login}/>
-        <Link to="/registration">Registration</Link>
-        <Route path="/registration" component={Registration}/>
+        <Route>
+          <div>
+            <Navbar/>
+            <Switch>
+              <Route exactly component={Login} path="/login"/>
+              <Route exactly component={Registration} path="/registration"/>
+            </Switch>
+          </div>
+        </Route>
         <Background />
       </div>
     )
