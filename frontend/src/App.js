@@ -10,6 +10,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import MainMenu from './components/MainMenu';
 
 class App extends React.Component{
   constructor(props) {
@@ -26,6 +27,7 @@ class App extends React.Component{
         <Link to="/registration">Registration</Link>
         <Route path="/registration" component={Registration}/>
         <Background />
+        <Route path="/MainMenu" component={MainMenu}/>
       </div>
     )
 
