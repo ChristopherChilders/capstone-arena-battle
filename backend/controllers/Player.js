@@ -19,3 +19,30 @@ async function retrieveOne(req, res){
         }
     });
 }
+
+async function retrieveByEmail(req, res){
+    const thePlayer = await Player.getByEmail(req.params.email);
+    res.render('players', {
+        locals: {
+            onePlayer: thePlayer
+        }
+    })
+}
+
+async function retrieveAllPlayers (req, res){
+    const allPlayers = await allPlayers.getAll();
+    res.json(allPlayers);
+}
+
+function updatePlayer (req, res){
+    res.json({message: "player has been updated"})
+}
+
+module.exports = {
+    addPlayer,
+    deletePlayer,
+    retrieveOne,
+    retrieveByEmail,
+    retrieveAllPlayers,
+    updatePlayer
+};

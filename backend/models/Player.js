@@ -2,21 +2,22 @@ const db = require('./conn');
 const bcrypt = require('bcryptjs');
 
 class Player {
-    constructor(id, username, email, password, created_at) {
+    // , created_at
+    constructor(id, username, email, password) {
         this.id = id;
         this.userName = username;
         this.email = email;
         this.password = password;
-        this.createdAt = created_at;
+        // this.createdAt = created_at;
     }
-
-    static add(username, email, password, created_at){
+    // , created_at
+    static add(username, email, password){
         return db.one(`
         insert into players
-        (username, email, password, created_at)
+        (username, email, password)
         values
         ($1, $2, $3, $4)
-        returing id, username, email, password, created_at`, [username, email, password, created_at])
+        returing id, username, email, password`, [username, email, password])
         .then((data) => {
             return data.id;
         })
@@ -34,8 +35,8 @@ class Player {
                     playerData.id, 
                     playerData.username,
                     playerData.email,
-                    playerData.password,
-                    playerData.created_at
+                    playerData.password
+                    // playerData.created_at
                 );
                 return aPlayer;
             })
@@ -49,8 +50,8 @@ class Player {
                 playerData.id, 
                 playerData.username,
                 playerData.email,
-                playerData.password,
-                playerData.created_at                
+                playerData.password
+                // playerData.created_at                
             );
             return playerInstance;
         })
@@ -66,20 +67,22 @@ class Player {
                 playerData.id, 
                 playerData.username,
                 playerData.email,
-                playerData.password,
-                playerData.created_at
+                playerData.password
+                // playerData.created_at
             );
             return aPlayer;
         })
     }
 
     save(){
+        // created_at='${this.created_at}
         return db.result(`
         update players set
         username='${this.username}'
         email='${this.email}'
         password='${this.password}'
-        created_at='${this.created_at}'`)
+        
+        '`)
     }
 
     setPassword(newPassword){
