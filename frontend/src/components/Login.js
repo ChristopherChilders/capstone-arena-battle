@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../Login.module.css'
+import Axios from 'axios';
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -19,18 +20,19 @@ class Login extends React.Component{
                 type="email"
                 placeholder="email"
                 value={this.state.email}
+                id="email"
                 onChange={this.handleChange}/>
                 <label>Password</label>
                 <input
                 type="password"
                 placeholder="password"
                 value={this.state.password}
+                id="password"
                 onChange={this.handleChange}/>
                 <div className={style.submitButton}>
                 <button 
                 type="submit"
                 onSubmit={this.handleSubmit}
-                disabled={!this.validateForm}
                 >
                 Submit
                 </button>
@@ -40,18 +42,23 @@ class Login extends React.Component{
             </div>
         )
     }
-    handleChange(e) {
-        this.setState({
-            [e.target.id]: e.target.value
-        });
+
+    handleChange = (e) => {
         console.log("handleChange", e.target.value)
+        this.setState({
+            [e.target.id]: e.target.value,
+            [e.target.id]:e.target.value
+        });
     }
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault()
+        Axios.get('/login' , {
+            email: this.state.email,
+            password:this.state.password
+        })
+        console.log("handleSubmit", this.state.email, this.state.password);
+        
     }
-    // validateForm() {
-    //     return this.state.email.length > 0 && this.state.password.length > 0;
-    // }
 }
 
 export default Login;
