@@ -7,7 +7,7 @@ class Registration extends React.Component{
             userName: '',
             email: '',
             password:'',
-            createdAt: null
+            // createdAt: null
         }
     }
     render() {
@@ -52,7 +52,7 @@ class Registration extends React.Component{
             userName:e.target.value,
             email: e.target.value,
             password: e.target.value,
-            createdAt:''
+            // createdAt:''
         })
     }
     onSubmit(){

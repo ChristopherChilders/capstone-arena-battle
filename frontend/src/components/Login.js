@@ -33,7 +33,6 @@ class Login extends React.Component{
                 <button 
                 type="submit"
                 onSubmit={this.handleSubmit}
-                disabled={!this.validateForm}
                 >
                 Submit
                 </button>
@@ -51,16 +50,15 @@ class Login extends React.Component{
             [e.target.id]:e.target.value
         });
     }
-    handleSubmit =(e) => {
+    handleSubmit = (e) => {
         e.preventDefault()
-        Axios.post('need path' , {
+        Axios.get('/login' , {
             email: this.state.email,
             password:this.state.password
         })
+        console.log("handleSubmit", this.state.email, this.state.password);
+        
     }
-    // validateForm() {
-    //     return this.state.email.length > 0 && this.state.password.length > 0;
-    // }
 }
 
 export default Login;
