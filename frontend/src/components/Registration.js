@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../Registration.module.css';
+import style from '../css/Registration.module.css';
 class Registration extends React.Component{
     constructor(props){
         super(props);

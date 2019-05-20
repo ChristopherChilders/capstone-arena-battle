@@ -1,10 +1,8 @@
 import React from 'react';
-
-import './App.css';
+// import style from '../App.module.css';
 import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
-// import './App.css';
 import {
   Switch,
   Route,
@@ -20,7 +18,7 @@ class App extends React.Component{
   }
   render() {
     return(
-      <div>
+      <div >
         <Link to="/login">Login</Link>
         <Route path="/login" component={Login}/>
         <Link to="/registration">Registration</Link>
