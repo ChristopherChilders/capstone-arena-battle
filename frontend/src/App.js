@@ -3,6 +3,7 @@ import React from 'react';
 // import './App.css';
 import Background from './components/Background';
 import Login from './components/Login';
+import Registration from './components/Registration';
 // import './App.css';
 import {
   Switch,
@@ -22,6 +23,8 @@ class App extends React.Component{
       <div>
         <Link to="/login">Login</Link>
         <Route path="/login" component={Login}/>
+        <Link to="/registration">Registration</Link>
+        <Route path="/registration" component={Registration}/>
         <Background />
       </div>
     )
