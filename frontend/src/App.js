@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import MainMenu from './components/MainMenu';
 import Navbar from './components/Navbar';
 
 class App extends React.Component{
@@ -31,6 +32,7 @@ class App extends React.Component{
           </div>
         </Route>
         <Background />
+        <Route path="/MainMenu" component={MainMenu}/>
       </div>
     )
 

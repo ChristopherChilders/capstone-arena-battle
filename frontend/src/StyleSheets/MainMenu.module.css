@@ -1,0 +1,20 @@
+.MenuItems {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-bottom: 45%;
+    align-content: left;
+    width: 200px;
+}
+.MenuItem {
+    font-family: 'Pathway Gothic One', sans-serif;
+    text-shadow: 3px 5px 2px #474747;
+    color: orangered;
+    outline-color: yellow;
+}
+
+.heroimage{
+    background-image: url(../Images/DudeDance.GIF)
+}
+
+/* oh brother
