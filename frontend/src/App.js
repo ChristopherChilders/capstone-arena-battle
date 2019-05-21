@@ -4,6 +4,7 @@ import React from 'react';
 import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
+import LandingPage from './components/LandingPage';
 import {
   Switch,
   Route,
@@ -28,11 +29,12 @@ class App extends React.Component{
             <Switch>
               <Route exactly component={Login} path="/login"/>
               <Route exactly component={Registration} path="/registration"/>
+              <Route exact path="/MainMenu" component={MainMenu}/>
+              <Route exact path="/" component={LandingPage}/>
             </Switch>
           </div>
         </Route>
-        <Background />
-        <Route path="/MainMenu" component={MainMenu}/>
+        {/* <Background /> */}
       </div>
     )
 
