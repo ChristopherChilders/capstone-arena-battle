@@ -13,7 +13,10 @@ class Login extends React.Component{
         return (
             <div className={style.login}>
                 <h1 className={style.loginTitle}>Login</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form 
+            action="/login"
+            method="POST"
+            onSubmit={this.handleSubmit}>
             <label>Email</label>
             <div className={style.loginInputs}>
                 <input 
@@ -52,7 +55,7 @@ class Login extends React.Component{
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        Axios.get('/login' , {
+        Axios.post('/login' , {
             email: this.state.email,
             password:this.state.password
         })
