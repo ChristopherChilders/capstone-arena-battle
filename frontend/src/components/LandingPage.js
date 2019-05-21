@@ -14,7 +14,7 @@ class LandingPage extends React.Component {
         return (
             <div className={style.HeroImage}>
                 <div className={style.title}>
-                    <h1> Insert Title Name </h1>
+                    <h1> Lorem Title Ipsum </h1>
                 </div>
                 <div className={style.Login}>
                     <h1>
