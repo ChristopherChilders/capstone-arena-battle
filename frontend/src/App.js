@@ -16,10 +16,24 @@ import Navbar from './components/Navbar';
 class App extends React.Component{
   constructor(props) {
     super(props);
+    this.socket = [];
     this.state = {
-
+    
     }
   }
+
+  componentDidMount(){
+    const url = 'ws://localhost:4346/login';
+    this.connection = new WebSocket(url);
+
+    this.connection.onlogin = (e) => {
+      const email = JSON.parse(e.data);
+      this.setState({
+        email
+      });
+    }
+  }
+
   render() {
     return(
       <div >

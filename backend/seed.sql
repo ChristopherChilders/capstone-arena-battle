@@ -1,9 +1,9 @@
 insert into players
-(username, email, password, created_at)
+(username, email, password)
 VALUES
-('player1', 'player@one.com', 'password', '2019-05-17 09:05:35'),
-('player2', 'player@two.com', 'password', '2019-05-17 09:05:35'),
-('player3', 'player@three.com', 'password', '2019-05-17 09:05:35');
+('player1', 'player@one.com', '$2a$10$/BRhXDGOiEmna6zhgRb32eVgQxQurQySXAmE1vMXjq/31o4SXSPhu'),
+('player2', 'player@two.com', '$2a$10$/BRhXDGOiEmna6zhgRb32eVgQxQurQySXAmE1vMXjq/31o4SXSPhu'),
+('player3', 'player@three.com', '$2a$10$/BRhXDGOiEmna6zhgRb32eVgQxQurQySXAmE1vMXjq/31o4SXSPhu');
 
 insert into characters 
 (name, life, power, toughness, accuracy, initiative, experience, level)
