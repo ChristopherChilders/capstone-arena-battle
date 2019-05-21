@@ -11,7 +11,8 @@ const Player = require('./models/Player')
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({
     server,                 // pidggyback on the plain http server
-    path: '/login'           // listen on only one route, allowing express to listen on its custom  routes
+    path: '/login',           // listen on only one route, allowing express to listen on its custom  routes
+    port: 4346
 })
 
 wss.on('connection', (socket) => {
@@ -43,6 +44,9 @@ app.set('port', PORT);
 app.get('/', (req, res) => {
     // console.log(req)
     res.json(db)
+})
+app.post('/login', (req,res) => {
+    console.log(req.body);
 })
 
 app.listen(PORT, () => {

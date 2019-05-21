@@ -21,8 +21,8 @@ class App extends React.Component{
     }
   }
 
-  async componentDidMount(){
-    const url = 'ws://localhost:5152/login';
+  componentDidMount(){
+    const url = 'ws://localhost:4346/login';
     this.connection = new WebSocket(url);
 
     this.connection.onlogin = (e) => {
