@@ -10,11 +10,12 @@ export default function Background() {
     const healthStyle = {
         stroke:'black',
         strokeWidth: '2',
+        // strokeOpacity:"0.5",
         fill: 'green',
         fillOpacity: '100',
     }
   return (
-    <svg width="5000" height="5000" >
+    <svg width="2000" height="2000" >
     {/* SVG GRID BOX */}
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -34,25 +35,27 @@ export default function Background() {
     x="500"
     y="500">
         <rect 
-        x="0"
-        y="0"
+        x="5"
+        y="5"
         style={style}
         width="1200"
-        height="900"/>
+        height="900"
+        rx="15"
+        ry="15"
+        />
         <rect style={healthStyle}
-        x="10"
-        y="50"
+        x="15"
+        y="55"
         width="450"
         height="50"
         />
         <rect style={healthStyle}
-        x="740"
-        y="50"
+        x="745"
+        y="55"
         width="450"
         height="50"
         />
     </g>
     </svg>
-    
   )
 }
