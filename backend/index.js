@@ -7,11 +7,10 @@ const server = http.createServer(app);
 const PORT = process.env.PORT;
 const db = require('./models/conn');
 const Player = require('./models/Player')
-
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({
     server,                 // pidggyback on the plain http server
-    path: '/login',           // listen on only one route, allowing express to listen on its custom  routes
+    path: '/',           // listen on only one route, allowing express to listen on its custom  routes
     port: 4346
 })
 
@@ -35,16 +34,20 @@ wss.on('connection', (socket) => {
     })
 })
 
-// const path = require('path');
-// const socketIo = require('socket.io');
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}));
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.set('port', PORT);
 app.get('/', (req, res) => {
     // console.log(req)
     res.json(db)
 })
+// const path = require('path');
+// const socketIo = require('socket.io');
+const logInRouter = require('./routes/login');
+app.use('/login', logInRouter);
+
 app.post('/login', (req,res) => {
     console.log(req.body);
 })
@@ -52,3 +55,7 @@ app.post('/login', (req,res) => {
 app.listen(PORT, () => {
     console.log(`You're running on port ${PORT}`);
 })
+
+
+// const registrationRouter = require('./routes/registrationRouter');
+// app.use('/registration', registrationRouter);
