@@ -11,7 +11,6 @@ import {
 } from 'react-router-dom'
 import MainMenu from './components/MainMenu';
 import Navbar from './components/Navbar';
-
 class App extends React.Component{
   constructor(props) {
     super(props);
@@ -44,7 +43,7 @@ class App extends React.Component{
               <Route exactly component={Registration} path="/registration"/>
             </Switch>
           </div>
-        </Route>
+        </Route> 
         <Background />
         <Route path="/MainMenu" component={MainMenu}/>
       </div>

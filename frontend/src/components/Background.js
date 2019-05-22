@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import stickImage from '../Images/pixil-frame-0.png';
 export default function Background() {
     const style = {
         stroke:'#e71818',
@@ -15,20 +15,19 @@ export default function Background() {
         fillOpacity: '100',
     }
   return (
-    <svg width="2000" height="2000" >
+      <svg width="2000" height="2000">
     {/* SVG GRID BOX */}
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
-            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
-            </pattern>
-            <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-            <rect width="80" height="80" fill="url(#smallGrid)"/>
-            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
-            </pattern>
-        </defs>
-
-        <rect width="100%" height="100%" fill="url(#grid)" />
+   <defs>
+      <pattern id="smallGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="gray" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+        <rect width="100" height="100" fill="url(#smallGrid)"/>
+        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="gray" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)" opacity ="100%"/>
     </svg>
     {/* SVG GRID BOX END */}
     <g
@@ -43,6 +42,7 @@ export default function Background() {
         rx="15"
         ry="15"
         />
+        <image x="5" y="100" width="1200" height="900"href={stickImage} />
         <rect style={healthStyle}
         x="15"
         y="55"
