@@ -1,5 +1,6 @@
 require('dotenv').config();
-
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -38,6 +39,10 @@ wss.on('connection', (socket) => {
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(session({
+    store: new FileStore(),
+    secret: process.env.SESSION_SECRET
+}));
 app.set('port', PORT);
 app.get('/', (req, res) => {
     // console.log(req)
