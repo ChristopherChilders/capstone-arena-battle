@@ -39,7 +39,7 @@ class App extends React.Component{
       <div >
         <Route>
           <div>
-            <Navbar/>
+            {/* <Navbar/> */}
             <Switch>
               <Route exactly component={Login} path="/login"/>
               <Route exactly component={Registration} path="/registration"/>
