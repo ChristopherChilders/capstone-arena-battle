@@ -5,6 +5,7 @@ import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import LandingPage from './components/LandingPage';
+import GamePage from './components/GamePage';
 import {
   Switch,
   Route,
@@ -16,21 +17,24 @@ import Navbar from './components/Navbar';
 class App extends React.Component{
   constructor(props) {
     super(props);
-    this.socket = [];
     this.state = {
-    
+      // email: '',
+      // password: ''
+
     }
   }
 
   componentDidMount(){
-    const url = 'ws://localhost:4346/login';
+    const url = `ws://localhost:4000/ws`; 
     this.connection = new WebSocket(url);
 
-    this.connection.onlogin = (e) => {
-      const email = JSON.parse(e.data);
+    this.connection.onmessage = (e) => {
+      console.log(e);
+      console.log(e.data);
       this.setState({
-        email
-      });
+        email: '',
+        password: ''
+      })
     }
   }
 
@@ -45,6 +49,7 @@ class App extends React.Component{
               <Route exactly component={Registration} path="/registration"/>
               <Route exact path="/MainMenu" component={MainMenu}/>
               <Route exact path="/" component={LandingPage}/>
+              <Route exact path="/game" component={GamePage} />
             </Switch>
           </div>
         </Route>
@@ -53,6 +58,12 @@ class App extends React.Component{
     )
 
   }
+  // _login = async () => {
+  //   this.connection.send(JSON.stringify({
+  //     email,
+  //     password
+  //   }))
+  // }
 }
 
 export default App;
