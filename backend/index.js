@@ -49,6 +49,7 @@ const express = require('express');
 const app = express();
 const WebSocket = require('ws');
 const db = require('./models/conn');
+const Player = require('./models/Player')
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({
@@ -59,9 +60,10 @@ const wss = new WebSocket.Server({
 
 app.use(express.urlencoded({extended: true}));
 
-wss.on('connection', (socket) => {
+wss.on('connection', async (socket) => {
     console.log('new connection');
-    socket.send(JSON.stringify(db));
+    const player = await Player.getAll();
+    socket.send(JSON.stringify(player));
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         console.log(`recieved: %s`, message);
