@@ -13,9 +13,10 @@ async function logIn(req, res) {
 
 async function loginPlayer(req, res) {
     console.log("please work");
+    console.log("=================");
+    
     console.log(req.body);
-    console.log(req.body.email);
-    console.log(req.body.password);
+
 
     const theUser = await Player.getByEmail(req.body.email);
     const correctPassword = theUser.checkPassword(req.body.password);
