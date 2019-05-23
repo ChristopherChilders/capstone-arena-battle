@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../StyleSheets/Login.module.css'
 import Axios from 'axios';
+import NavBar from '../components/Navbar'
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -11,6 +12,8 @@ class Login extends React.Component{
     }
     render() {
         return (
+            <div>
+                <NavBar/>
             <div className={style.login}>
                 <h1 className={style.loginTitle}>Login</h1>
             <form 
@@ -42,6 +45,7 @@ class Login extends React.Component{
                 </div>
             </div>
             </form>
+            </div>
             </div>
         )
     }

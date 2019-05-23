@@ -1,16 +1,30 @@
+
+
 .HeroImage{
     background-color: grey;
+    -webkit-background-size: cover;
+    /* display: flex; */
+    align-content: column;
+    height: 700px;
 }
 
 .title{
     font-family: 'Bree Serif', serif;
     color: #7CBA35;
-    
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+
 
 }
 
 
 .Login{
     font-family: 'Teko', sans-serif;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10%;
+
 
 }
