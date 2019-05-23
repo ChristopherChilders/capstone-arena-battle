@@ -30,10 +30,6 @@ app.post('/login', (req,res) => {
     console.log(req.body);
 })
 
-app.listen(PORT, () => {
-    console.log(`You're running on port ${PORT}`);
-})
-
 
 // const registrationRouter = require('./routes/registrationRouter');
 // app.use('/registration', registrationRouter);
