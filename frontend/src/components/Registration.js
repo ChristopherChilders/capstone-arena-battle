@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import style from '../StyleSheets/Registration.module.css';
+import NavBar from '../components/Navbar'
 class Registration extends React.Component{
     constructor(props){
         super(props);
@@ -14,6 +15,7 @@ class Registration extends React.Component{
     render() {
         return (
             <div>
+                <NavBar/>
                 <div className={style.registrationTitle}>
                     <h1>Registration</h1>
                 </div>
