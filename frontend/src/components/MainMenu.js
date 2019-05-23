@@ -8,7 +8,19 @@ class MainMenu extends React.Component {
         super(props);
         this.state = { }
     }
-
+    componentDidMount(){
+        const url = `ws://localhost:4000/ws`; 
+        this.connection = new WebSocket(url);
+    
+        this.connection.onmessage = (e) => {
+        console.log(e);
+        console.log(e.data);
+        this.setState({
+            email: '',
+            password: ''
+        })
+        }
+    }
     render () {
         return (
             <div className={style.heroimage}>
