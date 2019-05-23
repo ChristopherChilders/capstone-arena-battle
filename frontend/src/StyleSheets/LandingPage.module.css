@@ -1,11 +1,15 @@
-
+html, body {
+    height: 100%;
+    background: #504a40;
+}
 
 .HeroImage{
     background-color: grey;
     -webkit-background-size: cover;
+    background-size: 100%;
     /* display: flex; */
     align-content: column;
-    height: 700px;
+    height: 675px;
 }
 
 .title{
