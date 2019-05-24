@@ -46,6 +46,7 @@ app.use(express.urlencoded({extended: true}));
 wss.on('connection', async (socket) => {
     console.log('new connection');
     const player = await Player.getAll();
+    delete player['password'];
     socket.send(JSON.stringify(player));
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);

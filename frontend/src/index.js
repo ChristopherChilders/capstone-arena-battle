@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import reducers from './reducers/rootReducer';
 import { createStore } from 'redux';
-const store = createStore(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), reducers)
-ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, document.getElementById('root'));
+// const store = createStore(
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), reducers)
+// ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change
