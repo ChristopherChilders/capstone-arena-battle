@@ -24,6 +24,7 @@ class App extends React.Component{
   render() {
     return(
       <div >
+              <Background />
         <Route>
           <div>
             <Switch>
@@ -32,7 +33,6 @@ class App extends React.Component{
               <Route exact path="/" component={LandingPage}/>
               <Route exact path="/MainMenu" component={MainMenu}/>
               <Route exact path="/game" component={GamePage} />
-
             </Switch>
           </div>
         </Route>
