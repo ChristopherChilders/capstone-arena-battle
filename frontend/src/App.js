@@ -13,6 +13,14 @@ import {
 import MainMenu from './components/MainMenu';
 
 class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      messages:['hello'],
+      text:'',
+      user:'Anonymous'
+    }
+  }
   render() {
     return(
       <div >
