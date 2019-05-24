@@ -8,8 +8,8 @@ const express = require('express');
 const app = express();
 const WebSocket = require('ws');
 const db = require('./models/conn');
-const Player = require('./models/Player')
-const Attacks = require('./models/Attack');
+const Attack = require('./models/Attack');
+const Player = require('./models/Player');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -45,10 +45,8 @@ app.use(express.urlencoded({extended: true}));
 
 wss.on('connection', async (socket) => {
     console.log('new connection');
-    const player = await Player.getAll();
-    delete player['password'];
-    const attack = await Attacks.getAll();
-    socket.send(JSON.stringify(player, attack));
+    const attack = await Attack.getAttacksByCharacter(3);
+    socket.send(JSON.stringify(attack));
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         console.log(`recieved: %s`, message);

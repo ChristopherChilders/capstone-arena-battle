@@ -31,6 +31,9 @@ class Background extends React.Component{
         }
     }
     render() {
+        const imageStyle ={
+            fillOpacity:"0",
+        }
         const style = {
             stroke:'#e71818',
             strokeWidth: '5',
@@ -64,6 +67,7 @@ class Background extends React.Component{
         <g
         x="500"
         y="500">
+            <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
             <rect 
             x="5"
             y="5"
@@ -73,7 +77,6 @@ class Background extends React.Component{
             rx="15"
             ry="15"
             />
-            <image x="5" y="100" width="1200" height="900"href={stickImage} />
             <rect style={healthStyle}
             x="15"
             y="55"
