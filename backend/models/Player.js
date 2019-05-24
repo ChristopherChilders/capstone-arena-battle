@@ -28,7 +28,7 @@ class Player {
     }
 
     static getAll(){
-        return db.any(`select * from players`)
+        return db.any(`select id, username, email from players`)
         .then((arrayOfPlayers) => {
             return arrayOfPlayers.map((playerData) => {
                 const aPlayer = new Player (
