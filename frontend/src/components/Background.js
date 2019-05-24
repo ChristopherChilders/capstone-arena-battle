@@ -1,5 +1,6 @@
 import React from 'react';
 import stickImage from '../Images/pixil-frame-0.png';
+import PlayerOne from './PlayerOne';
 export default function Background() {
     const style = {
         stroke:'#e71818',
@@ -11,7 +12,7 @@ export default function Background() {
         stroke:'black',
         strokeWidth: '2',
         // strokeOpacity:"0.5",
-        fill: 'green',
+        fill: 'red',
         fillOpacity: '100',
     }
   return (
@@ -56,6 +57,7 @@ export default function Background() {
         height="50"
         />
     </g>
+    <PlayerOne />
     </svg>
-  )
+)
 }

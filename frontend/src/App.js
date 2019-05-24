@@ -4,6 +4,7 @@ import React from 'react';
 import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
+import PropTypes from 'prop-types';
 import {
   Switch,
   Route,
@@ -44,12 +45,19 @@ class App extends React.Component{
             </Switch>
           </div>
         </Route> 
-        <Background />
+            <div>
+            <Background />
+            </div>
         <Route path="/MainMenu" component={MainMenu}/>
       </div>
     )
 
   }
+}
+
+App.propTypes = {
+  gameState: PropTypes.bool.isRequired,
+  
 }
 
 export default App;
