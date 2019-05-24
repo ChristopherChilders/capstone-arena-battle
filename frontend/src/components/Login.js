@@ -1,7 +1,9 @@
 import React from 'react';
 import style from '../StyleSheets/Login.module.css'
-import Axios from 'axios';
+import loginAction from '../actions/loginAction'
 import NavBar from '../components/Navbar'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -17,8 +19,6 @@ class Login extends React.Component{
             <div className={style.login}>
                 <h1 className={style.loginTitle}>Login</h1>
             <form 
-            action="/login"
-            method="POST"
             onSubmit={this.handleSubmit}>
             <label>Email</label>
             <div className={style.loginInputs}>
@@ -59,13 +59,22 @@ class Login extends React.Component{
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/login' , {
-            email: this.state.email,
-            password:this.state.password
+        this.props.loginAction({
+            email:this.state.email,
+            password: this.state.password
         })
         console.log("handleSubmit", this.state.email, this.state.password);
         
     }
 }
-
-export default Login;
+function mapDispatchToProps() {
+    return bindActionCreators({
+        loginAction:loginAction
+    })
+}
+function mapStateToProps(state){
+    return{
+        login:state.login
+    }
+}
+export default connect(mapDispatchToProps,mapStateToProps)(Login);

@@ -4,8 +4,8 @@ import registrationReducer from './registrationReducer'
 // import smaller reducers here
 
 const rootReducer = combineReducers({
-    registrationReducer,
-    loginReducer
+    registration: registrationReducer,
+    login: loginReducer
 })
 
 export default rootReducer;
