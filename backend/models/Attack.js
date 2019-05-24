@@ -11,6 +11,23 @@ class Attack {
         this.abilities = abilities;
         this.targets = targets;
     }
+    static getAll(){
+        return db.any(`select * from attacks`)
+        .then((arrayOfAttacks) => {
+            return arrayOfAttacks.map((attackData) => {
+                const aAttack = new Attack(
+                    attackData.id,
+                    attackData.characters_id,
+                    attackData.name,
+                    attackData.summary,
+                    attackData.damage,
+                    attackData.abilities,
+                    attackData.targets
+                );
+                return aAttack;
+            })
+        })
+    }
 
     static getAttackById(id){
         return db.one(`select * from attacks where id=$1`, [id])
