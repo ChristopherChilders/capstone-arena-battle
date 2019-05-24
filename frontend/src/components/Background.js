@@ -1,4 +1,5 @@
 import React from 'react'
+import stickImage from '../Images/pixil-frame-0.png';
 
 export default function Background() {
     const style = {
@@ -43,6 +44,7 @@ export default function Background() {
         rx="15"
         ry="15"
         />
+        <image x="5" y="100" width="1200" height="900"href={stickImage} />
         <rect style={healthStyle}
         x="15"
         y="55"
