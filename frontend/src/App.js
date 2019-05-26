@@ -1,7 +1,7 @@
 import React from 'react';
 // import style from '../App.module.css';
 
-import Background from './components/Background';
+// import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import LandingPage from './components/LandingPage';

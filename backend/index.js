@@ -21,8 +21,16 @@ app.get('/', (req, res) => {
     // console.log(req)
     res.json(db)
 })
-// const path = require('path');
-// const socketIo = require('socket.io');
+const cors = require('cors')
+app.use(cors())
+// const helmet = require('helmet');
+// app.use((helmet()));
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     next();
+// });
 const logInRouter = require('./routes/login');
 app.use('/login', logInRouter);
 
@@ -40,8 +48,6 @@ const wss = new WebSocket.Server({
     server,
     port: 4000
 });
-
-app.use(express.urlencoded({extended: true}));
 
 wss.on('connection', async (socket) => {
     console.log('new connection');

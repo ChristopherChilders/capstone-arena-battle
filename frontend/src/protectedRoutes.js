@@ -34,7 +34,9 @@ class protectedRoutes extends React.Component {
                 </div>
             )
         } else {
-            <Redirect to="/"/>
+            return(
+                <Redirect to="/"/>
+            )
         }
     }
 

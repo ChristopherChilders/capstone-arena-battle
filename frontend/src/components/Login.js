@@ -9,7 +9,9 @@ class Login extends React.Component{
         super(props);
         this.state = {
             email: 'player@one.com',
-            password: 'password'
+            password: 'password',
+            loggedIn: false
+
         }
     }
     render() {
@@ -67,14 +69,14 @@ class Login extends React.Component{
         
     }
 }
-function mapDispatchToProps() {
-    return bindActionCreators({
-        loginAction:loginAction
-    })
-}
 function mapStateToProps(state){
     return{
-        login:state.login
+        loggedIn: state.loggedIn
     }
 }
-export default connect(mapDispatchToProps,mapStateToProps)(Login);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        loginAction:loginAction
+    }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
