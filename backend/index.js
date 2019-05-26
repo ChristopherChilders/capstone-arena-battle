@@ -37,7 +37,8 @@ app.use('/login', logInRouter);
 app.post('/login', (req,res) => {
     console.log(req.body);
 })
-
+const registrationRouter = require('./routes/registration');
+app.use('/registration', registrationRouter);
 
 // const registrationRouter = require('./routes/registrationRouter');
 // app.use('/registration', registrationRouter);
