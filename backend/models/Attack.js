@@ -12,23 +12,22 @@ class Attack {
         this.targets = targets;
     }
     static getAll(){
-        return db.any(`select * from attacks`)
-        .then((arrayOfAttacks) => {
-            return arrayOfAttacks.map((attackData) => {
-                const aAttack = new Attack(
-                    attackData.id,
-                    attackData.characters_id,
-                    attackData.name,
-                    attackData.summary,
-                    attackData.damage,
-                    attackData.abilities,
-                    attackData.targets
-                );
-                return aAttack;
-            })
+       return db.any(`select * from attacks`)
+    .then((arrayOfAttacks) => {
+        return arrayOfAttacks.map((attackData) => {
+            const aAttack = new Attack(
+            attackData.id,
+            attackData.characters_id,
+            attackData.name,
+            attackData.summary,
+            attackData.damage,
+            attackData.abilities,
+            attackData.targets
+            );
+            return aAttack;
         })
-    }
-
+    })
+}
     static getAttackById(id){
         return db.one(`select * from attacks where id=$1`, [id])
         .then((attackData) => {
@@ -48,7 +47,8 @@ class Attack {
     static getAttacksByCharacter(charactersId){
         return db.any(`select * from attacks where characters_id=$1`, [charactersId])
         .then((attackData) => {
-            const attackInstance = new Attack(
+            return attackData.map((attackData) => {
+                const aAttack = new Attack(
                 attackData.id,
                 attackData.characters_id,
                 attackData.name,
@@ -56,8 +56,9 @@ class Attack {
                 attackData.damage,
                 attackData.abilities,
                 attackData.targets
-            );
-            return attackInstance;
+                );
+                return aAttack;
+            })
         })
     }
 

@@ -25,7 +25,7 @@ class App extends React.Component{
     return(
       <div >
               <Background />
-        <Route>
+        {/* <Route>
           <div>
             <Switch>
               <Route exactly component={Login} path="/login"/>
@@ -35,7 +35,7 @@ class App extends React.Component{
               <Route exact path="/game" component={GamePage} />
             </Switch>
           </div>
-        </Route>
+        </Route> */}
       </div>
     )
 
