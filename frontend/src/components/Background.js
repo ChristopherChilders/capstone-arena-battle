@@ -18,15 +18,30 @@ class Background extends React.Component{
         this.connection = new WebSocket(url);
         this.connection.onmessage = (e) => {
         console.log(e);
-        console.log(e.data);
+        let newData =JSON.parse(e.data);
+        console.log(newData)
         this.setState({
-            id: e.data.id,
-            characters_id: e.data.characters_id,
-            name: e.data.name,
-            summary: e.data.summary,
-            damage: e.data.damage,
-            abilities: e.data.abilities,
-            targets: e.data.targets
+            id: newData.attack[0].id,
+            characters_id: newData.attack[0].charactersId,
+            name: newData.attack[0].name,
+            summary: newData.attack[0].summary,
+            damage: newData.attack[0].damage,
+            abilities: newData.attack[0].abilities,
+            targets: newData.attack[0].targets,
+            character: newData.characters[0].id,
+            characterName: newData.characters[0].name,
+            characterPower: newData.characters[0].power,
+            characterToughness: newData.characters[0].toughness,
+// 
+// accuracy: 20
+// experience: 0
+// id: 2
+// initiative: 20
+// level: 1
+// life: 100
+// name: "victor"
+// power: 20
+// toughness: 20
         })
         }
     }
