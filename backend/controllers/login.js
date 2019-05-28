@@ -23,13 +23,13 @@ async function loginPlayer(req, res) {
     if (correctPassword) {
         req.session.user = theUser.id;
         req.session.save(() => {
-            res.redirect('/mainmenu');
+            // res.redirect('/mainmenu');
         });
     } else {
         res.render('login', {
             locals: {
                 email: req.body.email,
-                message: 'Password IS WRONG. GET OUT!'
+                message: 'Incorrect Password. Please Try Again!'
             }
         });
     }

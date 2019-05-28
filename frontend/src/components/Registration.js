@@ -1,14 +1,18 @@
 import React from 'react';
-import Axios from 'axios';
 import style from '../StyleSheets/Registration.module.css';
-import NavBar from '../components/Navbar'
+import NavBar from '../components/Navbar';
+import registrationAction from '../actions/registrationAction';
+// import loginAction from '../actions/loginAction';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 class Registration extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            userName: '',
-            email: '',
-            password:'',
+            // id: '',
+            username: 'test',
+            email: 'test@test.com',
+            password:'test',
             // createdAt: null
         }
     }
@@ -20,17 +24,15 @@ class Registration extends React.Component{
                     <h1>Registration</h1>
                 </div>
                 <form 
-                action="/registration"
-                method="POST"
                 onSubmit={this.handleSubmit}>
                     <div className={style.registrationForm}>
                     <label className={style.registrationLabel}>Username</label>
                         <input 
-                            id="userName"
+                            id="username"
                             type="text"
                             placeholder="Username"
                             onChange={this.onChange}
-                            value={this.state.userName}/>
+                            value={this.state.username}/>
                     <label className={style.registrationLabel}>Password</label>
                         <input 
                             id="password"
@@ -69,16 +71,23 @@ class Registration extends React.Component{
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/login' , {
-            email: this.state.email,
-            password:this.state.password,
-            userName: this.state.userName
+        this.props.registrationAction({
+            email:this.state.email,
+            password: this.state.password,
+            username: this.state.username
         })
-        console.log("handleSubmit", 
-        "email", this.state.email,
-        "password", this.state.password,
-        "username", this.state.userName);
+        return this.state.id
     }
 }
 
-export default Registration;
+// function mapStateToProps(state){
+//     return{
+//         loggedIn: state.loggedIn
+//     }
+// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        registrationAction: registrationAction
+    }, dispatch)
+}
+export default connect(null, mapDispatchToProps)(Registration);

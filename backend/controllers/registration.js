@@ -4,6 +4,4 @@ async function goToRegistration(req, res) {
     res.render('registration')
 }
 
-export default {
-    goToRegistration
-}
+module.exports = {goToRegistration}

@@ -27,7 +27,7 @@ class protectedRoutes extends React.Component {
         </div>
         )
     } else {
-        if(this.props.login.length !==0){
+        if(this.props.loggedIn === true){
             return (
                 <div>
                     <Route exact path="/mainmenu" Component={MainMenu}/>

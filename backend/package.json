@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon --ignore sessions index.js",
     "db:create": "createdb arenacapstone-app",
     "db:init": "psql -f schema.sql arenacapstone-app && psql -f seed.sql arenacapstone-app",
     "db:destroy": "dropdb arenacapstone-app",

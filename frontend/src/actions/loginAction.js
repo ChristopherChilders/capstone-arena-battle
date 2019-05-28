@@ -4,7 +4,7 @@ export default (userData) =>{
     console.log(userData);
     
     const axiosPromise = axios({
-        url : 'http://localhost:5152/login',
+        url : '/login',
         method : "POST",
         data : userData
     })

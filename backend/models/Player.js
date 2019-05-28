@@ -16,8 +16,8 @@ class Player {
         insert into players
         (username, email, password)
         values
-        ($1, $2, $3, $4)
-        returing id, username, email, password`, [username, email, password])
+        ($1, $2, $3)
+        returning id, username, email, password`, [username, email, password])
         .then((data) => {
             return data.id;
         })

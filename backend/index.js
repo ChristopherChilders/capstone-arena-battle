@@ -9,6 +9,7 @@ const app = express();
 const WebSocket = require('ws');
 const db = require('./models/conn');
 const Player = require('./models/Player')
+// const cors = require('cors')
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -21,22 +22,13 @@ app.get('/', (req, res) => {
     // console.log(req)
     res.json(db)
 })
-const cors = require('cors')
-app.use(cors())
-// const helmet = require('helmet');
-// app.use((helmet()));
-// app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//     next();
-// });
+// app.use(cors())
 const logInRouter = require('./routes/login');
 app.use('/login', logInRouter);
 
 app.post('/login', (req,res) => {
     console.log(req.body);
-})
+}) 
 const registrationRouter = require('./routes/registration');
 app.use('/registration', registrationRouter);
 
@@ -66,5 +58,5 @@ wss.on('connection', async (socket) => {
 });
 
 server.listen(PORT, ()=> {
-    console.log('you can do this, Chris');
+    console.log('you can do this, Chris, no he cant');
 })
