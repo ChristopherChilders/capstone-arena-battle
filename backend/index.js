@@ -10,6 +10,7 @@ const WebSocket = require('ws');
 const db = require('./models/conn');
 const Attack = require('./models/Attack');
 const Player = require('./models/Player');
+const Characters = require('./models/Character');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -45,8 +46,11 @@ app.use(express.urlencoded({extended: true}));
 
 wss.on('connection', async (socket) => {
     console.log('new connection');
-    const attack = await Attack.getAttacksByCharacter(3);
-    socket.send(JSON.stringify(attack));
+    const attack = await Attack.getAll();
+    const player = await Player.getAll();
+    const characters = await Characters.getAll();
+    const data = {attack,player,characters}
+    socket.send(JSON.stringify(data));
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         console.log(`recieved: %s`, message);
