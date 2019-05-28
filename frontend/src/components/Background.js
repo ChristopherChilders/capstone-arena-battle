@@ -14,6 +14,8 @@ class Background extends React.Component{
         }
       }
       componentDidMount(){
+          // This is where you have your first chance to affect state,
+          // So, this is the first place that you can plug in your websocket connection
         const url = `ws://localhost:4000/ws`;
         this.connection = new WebSocket(url);
         this.connection.onmessage = (e) => {
