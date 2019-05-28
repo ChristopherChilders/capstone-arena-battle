@@ -1,11 +1,15 @@
-export default(state = [], action={type:''}) => {
+export default(state = false, action={type:''}) => {
     console.log(action);
     
     if (action.type === "LOGIN_ACTION" ){ 
         console.log(action.payload);
-        return action.payload.data
+        let isValidId = false;
+        if(action.payload.id){
+            isValidId=true
+        }
+        return isValidId
     } else if (action.type === "LOGOUT_ACTION") {
-        return []
+        return false
     } else {
         return state
     }

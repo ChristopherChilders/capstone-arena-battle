@@ -9,7 +9,7 @@ import reduxpromise from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
 const middleware = applyMiddleware(reduxpromise);
 const store = middleware(createStore);
-const middlewareStore = store(reducers);
+const middlewareStore = store(reducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(<Router><Provider store={middlewareStore}><App /></Provider></Router>, document.getElementById('root'));
 
 

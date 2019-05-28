@@ -4,6 +4,7 @@ import loginAction from '../actions/loginAction'
 import NavBar from '../components/Navbar'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -15,41 +16,49 @@ class Login extends React.Component{
         }
     }
     render() {
-        return (
-            <div>
-                <NavBar/>
-            <div className={style.login}>
-                <h1 className={style.loginTitle}>Login</h1>
-            <form 
-            onSubmit={this.handleSubmit}>
-            <label>Email</label>
-            <div className={style.loginInputs}>
-                <input 
-                type="email"
-                placeholder="email"
-                value={this.state.email}
-                id="email"
-                onChange={this.handleChange}/>
-                <label>Password</label>
-                <input
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                id="password"
-                onChange={this.handleChange}/>
-                <div className={style.submitButton}>
-                <button 
-                type="submit"
-                onSubmit={this.handleSubmit}
-                >
-                Submit
-                </button>
+        if(this.props.login) {
+            return(
+                <div>
+                    <Redirect to='/mainmenu'/>
                 </div>
-            </div>
-            </form>
-            </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div>
+                    <NavBar/>
+                <div className={style.login}>
+                    <h1 className={style.loginTitle}>Login</h1>
+                <form 
+                onSubmit={this.handleSubmit}>
+                <label>Email</label>
+                <div className={style.loginInputs}>
+                    <input 
+                    type="email"
+                    placeholder="email"
+                    value={this.state.email}
+                    id="email"
+                    onChange={this.handleChange}/>
+                    <label>Password</label>
+                    <input
+                    type="password"
+                    placeholder="password"
+                    value={this.state.password}
+                    id="password"
+                    onChange={this.handleChange}/>
+                    <div className={style.submitButton}>
+                    <button 
+                    type="submit"
+                    onSubmit={this.handleSubmit}
+                    >
+                    Submit
+                    </button>
+                    </div>
+                </div>
+                </form>
+                </div>
+                </div>
+            )
+        }
     }
 
     handleChange = (e) => {
@@ -71,7 +80,7 @@ class Login extends React.Component{
 }
 function mapStateToProps(state){
     return{
-        loggedIn: state.loggedIn
+        login: state.login
     }
 }
 function mapDispatchToProps(dispatch) {
