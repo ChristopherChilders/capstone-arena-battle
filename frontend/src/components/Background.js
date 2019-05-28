@@ -1,5 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import stickImage from '../Images/pixil-frame-0.png';
+import PlayerOneComponent from './playerOneComponent';
+
 class Background extends React.Component{
     constructor(props){
         super(props);
@@ -8,18 +10,20 @@ class Background extends React.Component{
             characters_id: "",
             name: "",
             summary:"",
-            damage: 0,
+            damage: 5,
             abilities:'',
-            targets: ''
+            targets: '',
+            startHealth: 1,
         }
       }
       componentDidMount(){
         const url = `ws://localhost:4000/ws`;
         this.connection = new WebSocket(url);
         this.connection.onmessage = (e) => {
-        console.log(e);
+        // console.log(e);
         let newData =JSON.parse(e.data);
-        console.log(newData)
+        // console.log(newData)
+
         this.setState({
             id: newData.attack[0].id,
             characters_id: newData.attack[0].charactersId,
@@ -31,20 +35,12 @@ class Background extends React.Component{
             character: newData.characters[0].id,
             characterName: newData.characters[0].name,
             characterPower: newData.characters[0].power,
-            characterToughness: newData.characters[0].toughness,
-// 
-// accuracy: 20
-// experience: 0
-// id: 2
-// initiative: 20
-// level: 1
-// life: 100
-// name: "victor"
-// power: 20
-// toughness: 20
+            characterToughness: newData.characters[0].toughness
         })
+
         }
     }
+
     render() {
         const imageStyle ={
             fillOpacity:"0",
@@ -62,6 +58,14 @@ class Background extends React.Component{
             fill: 'green',
             fillOpacity: '100',
         }
+        const healthStyleRED = {
+            stroke:'black',
+            strokeWidth: '2',
+            // strokeOpacity:"0.5",
+            fill: 'red',
+            fillOpacity: '100',
+        }
+        // console.log(this.state.damage)
       return (
         <svg width="2000" height="2000" >
         {/* SVG GRID BOX */}
@@ -79,9 +83,6 @@ class Background extends React.Component{
             <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
         {/* SVG GRID BOX END */}
-        <g
-        x="500"
-        y="500">
             <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
             <rect 
             x="5"
@@ -92,21 +93,21 @@ class Background extends React.Component{
             rx="15"
             ry="15"
             />
-            <rect style={healthStyle}
+            <rect style={healthStyleRED}
             x="15"
             y="55"
             width="450"
             height="50"
             />
-            <rect style={healthStyle}
+            <rect style={healthStyleRED}
             x="745"
             y="55"
             width="450"
             height="50"
             />
-        </g>
+        <PlayerOneComponent {...this.state}/>
         </svg>
-      )
+    )
     }
 }
 
