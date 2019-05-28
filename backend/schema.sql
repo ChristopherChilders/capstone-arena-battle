@@ -3,7 +3,6 @@ create table players (
     username VARCHAR(100),
     email VARCHAR(100),
     password VARCHAR(100),
-    created_at TIMESTAMP DEFAULT current_timestamp
 );
 
 create TABLE characters (

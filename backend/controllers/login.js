@@ -23,15 +23,16 @@ async function loginPlayer(req, res) {
     if (correctPassword) {
         req.session.user = theUser.id;
         req.session.save(() => {
-            // res.redirect('/mainmenu');
+            res.json({
+                id: theUser.id
+            })
         });
     } else {
-        res.render('login', {
-            locals: {
+
+            res.json ({
                 email: req.body.email,
                 message: 'Incorrect Password. Please Try Again!'
-            }
-        });
+            });
     }
 }
 module.exports = {

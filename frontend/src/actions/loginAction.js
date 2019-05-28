@@ -1,18 +1,17 @@
 import axios from "axios";
 
-export default (userData) =>{
-    console.log(userData);
+export default async (userData) =>{
+    console.log("userDate", userData);
     
-    const axiosPromise = axios({
+    const { data } = await axios({
         url : '/login',
-        method : "POST",
-        data : userData
+        data : userData,
+        method : "POST"
     })
-    .then(function (response) {
-        console.log(response)
-    })
+    console.log("data", data);
+    
     return{
         type: "LOGIN_ACTION",
-        payload : axiosPromise
+        payload : data
     }
 }
