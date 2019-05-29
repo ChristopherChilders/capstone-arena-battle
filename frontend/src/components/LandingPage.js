@@ -16,7 +16,7 @@ class LandingPage extends React.Component {
             <div className={style.HeroImage}>
                 <div className={style.title}>
                     <h1> B R A W L  </h1>
-                        <img src={Emrboider}></img>
+                        <img src={Emrboider} alt=""></img>
                 </div>
 
                 <div className={style.Login}>
