@@ -10,7 +10,7 @@ class Background extends React.Component{
         this.state={
             id: 0,
             characters_id: "",
-            name: "",
+            name: "asdfasdf",
             summary:"",
             damage: 5,
             abilities:'',
@@ -27,6 +27,8 @@ class Background extends React.Component{
         console.log(newData)
 
         this.setState({
+
+            chosenAttack:0,
             // characters
             // characters_id1: newData.attack[0].charactersId,
             characterName1: newData.characters[0].name,
@@ -119,22 +121,31 @@ class Background extends React.Component{
             <PlayerOneComponent {...this.state}/>
             <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
-        <div>
-        <AttackButton damage={this.state.character1Attack1Damage} name={this.state.character1Attack1Name} life={this._setDamage}/>
-        </div>
+            <div>
 
+            <AttackButton name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
+            </div>
     </div>
         
     )
     }
-    _setDamage=()=>{
-        console.log("_setDamage was called");
+    _setFirstAttack=()=>{
+        console.log("_setDamage1 was called");
         let currentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
         this.setState({
             opponentLife1: currentHealth
         })
         console.log(this.state)
     }
+    _setSecondAttack=()=>{
+        console.log("_setDamage2 was called");
+        let currentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
+        this.setState({
+            opponentLife1: currentHealth
+        })
+        console.log(this.state)
+    }
+
 
 }
 

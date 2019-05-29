@@ -6,7 +6,7 @@ import React from 'react'
 export default function Opponent({newHealth}) {
 
     let healthCalc = (newHealth/100)*450
-    console.log("look at===", healthCalc)
+
     const healthStyleGREEN = {
         stroke:'black',
         strokeWidth: '2',

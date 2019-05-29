@@ -24,7 +24,7 @@ class PlayerOne extends React.Component{
             <rect style={healthStyleGREEN}
           x="15"
           y="55"
-          width="250"
+          width="440"
           height="50"
           />
       </svg>
