@@ -1,4 +1,7 @@
 .registrationTitle{
+    font-size: 30px;
+    color: grey;
+    font-family: 'Pathway Gotchic One', sans-serif;
     text-align: center;
 }
 .registrationForm {

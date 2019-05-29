@@ -8,8 +8,9 @@ const express = require('express');
 const app = express();
 const WebSocket = require('ws');
 const db = require('./models/conn');
-const Player = require('./models/Player')
-// const cors = require('cors')
+const Attack = require('./models/Attack');
+const Player = require('./models/Player');
+const Characters = require('./models/Character');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -44,8 +45,15 @@ const wss = new WebSocket.Server({
 
 wss.on('connection', async (socket) => {
     console.log('new connection');
+    const attack = await Attack.getAll();
     const player = await Player.getAll();
-    socket.send(JSON.stringify(player));
+    const characters = await Characters.getAll();
+    // Websockets requires the information that you send to be one string
+    // Thus, our solution is this: 
+    const data = JSON.stringify({attack,player,characters})
+    // { {object: array}, {object: array}, {object: array} }
+    // Then we send "data" from our database to our react app
+    socket.send(data);
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         console.log(`recieved: %s`, message);
@@ -55,8 +63,9 @@ wss.on('connection', async (socket) => {
             }
         });
     });
-});
+ });
 
 server.listen(PORT, ()=> {
     console.log('you can do this, Chris, no he cant');
+
 })

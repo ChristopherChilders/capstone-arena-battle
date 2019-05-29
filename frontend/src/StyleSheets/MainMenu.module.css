@@ -2,18 +2,18 @@
     display: flex;
     flex-direction: column;
     margin-left: 5%;
-    margin-bottom: 45%;
+    margin-bottom: 30%;
     align-content: left;
     width: 200px;
 }
 .MenuItem {
     font-family: 'Pathway Gothic One', sans-serif;
-    text-shadow: 3px 5px 2px #754D10;
-    color: #DE8906;
+    color: grey;
+    font-size: 20px;
+    text-align: center;
 }
 
 .heroimage{
-    background-image: url(../Images/DudeDance.GIF)
 }
 
 
