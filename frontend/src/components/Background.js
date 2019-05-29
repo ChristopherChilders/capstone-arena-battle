@@ -22,20 +22,43 @@ class Background extends React.Component{
         this.connection.onmessage = (e) => {
         // console.log(e);
         let newData =JSON.parse(e.data);
-        // console.log(newData)
+        console.log(newData)
 
         this.setState({
-            id: newData.attack[0].id,
-            characters_id: newData.attack[0].charactersId,
-            name: newData.attack[0].name,
-            summary: newData.attack[0].summary,
-            damage: newData.attack[0].damage,
-            abilities: newData.attack[0].abilities,
-            targets: newData.attack[0].targets,
-            character: newData.characters[0].id,
-            characterName: newData.characters[0].name,
-            characterPower: newData.characters[0].power,
-            characterToughness: newData.characters[0].toughness
+            // characters
+            // characters_id1: newData.attack[0].charactersId,
+            characterName1: newData.characters[0].name,
+            characterPower1: newData.characters[0].power,
+            characterToughness1: newData.characters[0].toughness,
+            characterLife1: newData.characters[0].life,
+
+            //  character attacks
+            // id: newData.attack[0].id,
+            character1Attack1Name: newData.attack[0].name,
+            character1Attack1Summary: newData.attack[0].summary,
+            character1Attack1Damage: newData.attack[0].damage,
+            character1Attack2Name: newData.attack[1].name,
+            character1Attack2Summary: newData.attack[1].summary,
+            character1Attack2Damage: newData.attack[1].damage,
+
+            // Opponents
+            opponentName1: newData.opponents[0].name,
+            opponentLife1: newData.opponents[0].life,
+            opponentPower1: newData.opponents[0].power,
+            opponentToughness1: newData.opponents[0].toughness,
+
+            // opponent1 attacks
+            opponent1Attack1Name: newData.opponentsAttack[0].name,
+            opponent1Attack1Summary: newData.opponentsAttack[0].summary,
+            opponent1Attack1Damage: newData.opponentsAttack[0].damage,
+            opponent1Attack2Name: newData.opponentsAttack[1].name,
+            opponent1Attack2Summary: newData.opponentsAttack[1].summary,
+            opponent1Attack2Damage: newData.opponentsAttack[1].damage,
+
+            // abilities: newData.attack[0].abilities,
+            // targets: newData.attack[0].targets,
+            // character: newData.characters[0].id,
+            // characterName: newData.characters[0].name,
         })
 
         }

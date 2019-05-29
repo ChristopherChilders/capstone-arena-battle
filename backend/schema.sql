@@ -18,6 +18,27 @@ create TABLE characters (
     level INTEGER
 );
 
+create TABLE opponents (
+    id serial primary key,
+    name VARCHAR(100),
+    life INTEGER,
+    power INTEGER,
+    toughness INTEGER,
+    accuracy INTEGER,
+    initiative INTEGER,
+    experience INTEGER,
+    level INTEGER
+);
+
+create TABLE opponents_attacks (
+    id serial primary key,
+    opponents_id INTEGER REFERENCES opponents(id),
+    name VARCHAR(100),
+    summary VARCHAR(100),
+    damage INTEGER,
+    abilities VARCHAR(100),
+    targets VARCHAR(20)
+);
 create TABLE attacks (
     id serial primary key,
     characters_id INTEGER REFERENCES characters(id),

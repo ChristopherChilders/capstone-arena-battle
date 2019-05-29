@@ -11,6 +11,8 @@ const db = require('./models/conn');
 const Attack = require('./models/Attack');
 const Player = require('./models/Player');
 const Characters = require('./models/Character');
+const Opponents = require('./models/Opponent');
+const OpponentsAttack = require('./models/OpponentsAttack');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -49,7 +51,9 @@ wss.on('connection', async (socket) => {
     const attack = await Attack.getAll();
     const player = await Player.getAll();
     const characters = await Characters.getAll();
-    const data = {attack,player,characters}
+    const opponents = await Opponents.getAll();
+    const opponentsAttack = await OpponentsAttack.getAll();
+    const data = {attack,player,characters,opponents,opponentsAttack}
     socket.send(JSON.stringify(data));
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
@@ -60,7 +64,7 @@ wss.on('connection', async (socket) => {
             }
         });
     });
- });
+});
 
 server.listen(PORT, ()=> {
     console.log('you can do this, Chris');
