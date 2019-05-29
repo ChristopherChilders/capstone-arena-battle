@@ -1,6 +1,8 @@
 import React from 'react'
 import stickImage from '../Images/pixil-frame-0.png';
 import PlayerOneComponent from './playerOneComponent';
+import Opponents from './Opponent';
+import AttackButton from './AttackButton';
 
 class Background extends React.Component{
     constructor(props){
@@ -90,48 +92,67 @@ class Background extends React.Component{
         }
         // console.log(this.state.damage)
       return (
-        <svg width="2000" height="2000" >
-        {/* SVG GRID BOX */}
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
-                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
-                </pattern>
-                <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-                <rect width="80" height="80" fill="url(#smallGrid)"/>
-                <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
-                </pattern>
-            </defs>
-    
-            <rect width="100%" height="100%" fill="url(#grid)" />
+    <div>
+        <svg width="1300" height="925" >
+                <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
+                <rect 
+                x="5"
+                y="5"
+                style={style}
+                width="1200"
+                height="900"
+                rx="15"
+                ry="15"
+                />
+                <rect style={healthStyleRED}
+                x="15"
+                y="55"
+                width="450"
+                height="50"
+                />
+                <rect style={healthStyleRED}
+                x="745"
+                y="55"
+                width="450"
+                height="50"
+                />
+            <PlayerOneComponent {...this.state}/>
+            <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
-        {/* SVG GRID BOX END */}
-            <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
-            <rect 
-            x="5"
-            y="5"
-            style={style}
-            width="1200"
-            height="900"
-            rx="15"
-            ry="15"
-            />
-            <rect style={healthStyleRED}
-            x="15"
-            y="55"
-            width="450"
-            height="50"
-            />
-            <rect style={healthStyleRED}
-            x="745"
-            y="55"
-            width="450"
-            height="50"
-            />
-        <PlayerOneComponent {...this.state}/>
-        </svg>
+        <div>
+        <AttackButton damage={this.state.character1Attack1Damage} name={this.state.character1Attack1Name} life={this._setDamage}/>
+        </div>
+
+    </div>
+        
     )
     }
+    _setDamage=()=>{
+        console.log("_setDamage was called");
+        let currentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
+        this.setState({
+            opponentLife1: currentHealth
+        })
+        console.log(this.state)
+    }
+
 }
 
 export default Background;
+
+
+// {/* SVG GRID BOX */}
+// {/* <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+//     <defs>
+//         <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+//         <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
+//         </pattern>
+//         <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+//         <rect width="80" height="80" fill="url(#smallGrid)"/>
+//         <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
+//         </pattern>
+//     </defs>
+
+//     <rect width="100%" height="100%" fill="url(#grid)" />
+// </svg> */}
+// {/* SVG GRID BOX END */}

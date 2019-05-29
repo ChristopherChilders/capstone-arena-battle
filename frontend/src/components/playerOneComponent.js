@@ -24,21 +24,13 @@ class PlayerOne extends React.Component{
             <rect style={healthStyleGREEN}
           x="15"
           y="55"
-          width={this._setDamage}
+          width="250"
           height="50"
           />
       </svg>
     )
   }
-  _setDamage=()=>{
-    console.log("_setDamage was called");
-    let receivedHealth = this.props.damage/100
-    let currentHealth = (this.props.startHealth - receivedHealth)*450
-    // console.log(currentHealth)
-    this.setState({
-      damage: currentHealth
-    })
-  }
+
 }
 
 export default PlayerOne;
