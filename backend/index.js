@@ -11,6 +11,7 @@ const db = require('./models/conn');
 const Attack = require('./models/Attack');
 const Player = require('./models/Player');
 const Characters = require('./models/Character');
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -22,18 +23,18 @@ app.get('/', (req, res) => {
     // console.log(req)
     res.json(db)
 })
-// const path = require('path');
-// const socketIo = require('socket.io');
+// app.use(cors())
 const logInRouter = require('./routes/login');
 app.use('/login', logInRouter);
 
 app.post('/login', (req,res) => {
     console.log(req.body);
+}) 
+const registrationRouter = require('./routes/registration');
+app.use('/registration', registrationRouter);
+app.post('/registration', (req, res) => {
+    console.log(req.body)
 })
-
-
-// const registrationRouter = require('./routes/registrationRouter');
-// app.use('/registration', registrationRouter);
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({
@@ -42,9 +43,6 @@ const wss = new WebSocket.Server({
     port: 4000
 });
 
-app.use(express.urlencoded({extended: true}));
-
-// This is how you set up a websocket 'connection'
 wss.on('connection', async (socket) => {
     console.log('new connection');
     const attack = await Attack.getAll();
@@ -68,5 +66,6 @@ wss.on('connection', async (socket) => {
  });
 
 server.listen(PORT, ()=> {
-    console.log('Hello World!');
+    console.log('you can do this, Chris, no he cant');
+
 })

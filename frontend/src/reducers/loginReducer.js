@@ -1,9 +1,21 @@
-// export default(state = [], action) => {
-//     if (action.type === "LOGIN_ACTION" || action.type === "REG_ACTION") {
-//         return action.payload.data
-//     } else if (action.type === "LOGOUT_ACTION") {
-//         return []
-//     } else {
-//         return state
-//     }
-// }
+
+export default(state = false, action={type:''}) => {
+    // console.log(action);
+    
+    if (action.type === "LOGIN_ACTION"){ 
+        console.log(action.payload);
+        // let isValidId = false;
+        if(action.payload.id){
+            return true
+        }
+
+    } else if (action.type === "REGISTRATION_ACTION"){
+        console.log("registration-action");
+        
+        return true
+    } else if (action.type === "LOGOUT_ACTION") {
+        return false
+    } else {
+        return state
+    }
+}

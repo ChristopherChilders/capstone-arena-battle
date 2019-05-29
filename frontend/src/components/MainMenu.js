@@ -44,9 +44,4 @@ class MainMenu extends React.Component {
     }
 }
 
-
-
-
-
-
 export default MainMenu

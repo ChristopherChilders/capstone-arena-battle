@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon --ignore sessions index.js",
     "db:create": "createdb arenacapstone-app",
     "db:init": "psql -f schema.sql arenacapstone-app && psql -f seed.sql arenacapstone-app",
     "db:destroy": "dropdb arenacapstone-app",
@@ -31,6 +31,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-es6-template-engine": "^2.1.7",

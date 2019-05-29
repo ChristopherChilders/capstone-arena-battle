@@ -1,53 +1,63 @@
 import React from 'react';
 import style from '../StyleSheets/Login.module.css'
-import Axios from 'axios';
+import loginAction from '../actions/loginAction'
 import NavBar from '../components/Navbar'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 class Login extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            email: 'player@one.com',
-            password: 'password'
+            email: 'test@test.com',
+            password: 'test'
+
         }
     }
     render() {
-        return (
-            <div>
-                <NavBar/>
-            <div className={style.login}>
-                <h1 className={style.loginTitle}>Login</h1>
-            <form 
-            action="/login"
-            method="POST"
-            onSubmit={this.handleSubmit}>
-            <label>Email</label>
-            <div className={style.loginInputs}>
-                <input 
-                type="email"
-                placeholder="email"
-                value={this.state.email}
-                id="email"
-                onChange={this.handleChange}/>
-                <label>Password</label>
-                <input
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                id="password"
-                onChange={this.handleChange}/>
-                <div className={style.submitButton}>
-                <button 
-                type="submit"
-                onSubmit={this.handleSubmit}
-                >
-                Submit
-                </button>
+        if(this.props.login) {
+            return(
+                <div>
+                    <Redirect to='/mainmenu'/>
                 </div>
-            </div>
-            </form>
-            </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div>
+                    <NavBar/>
+                <div className={style.login}>
+                    <h1 className={style.loginTitle}>Login</h1>
+                <form 
+                onSubmit={this.handleSubmit}>
+                <label>Email</label>
+                <div className={style.loginInputs}>
+                    <input 
+                    type="email"
+                    placeholder="email"
+                    value={this.state.email}
+                    id="email"
+                    onChange={this.handleChange}/>
+                    <label>Password</label>
+                    <input
+                    type="password"
+                    placeholder="password"
+                    value={this.state.password}
+                    id="password"
+                    onChange={this.handleChange}/>
+                    <div className={style.submitButton}>
+                    <button 
+                    type="submit"
+                    onSubmit={this.handleSubmit}
+                    >
+                    Submit
+                    </button>
+                    </div>
+                </div>
+                </form>
+                </div>
+                </div>
+            )
+        }
     }
 
     handleChange = (e) => {
@@ -59,13 +69,22 @@ class Login extends React.Component{
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/login' , {
-            email: this.state.email,
-            password:this.state.password
+        this.props.loginAction({
+            email:this.state.email,
+            password: this.state.password
         })
         console.log("handleSubmit", this.state.email, this.state.password);
         
     }
 }
-
-export default Login;
+function mapStateToProps(state){
+    return{
+        login: state.login
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        loginAction:loginAction
+    }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

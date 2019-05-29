@@ -1,45 +1,44 @@
 import React from 'react';
 // import style from '../App.module.css';
-
+import {connect} from 'react-redux';
 import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import LandingPage from './components/LandingPage';
-import GamePage from './components/GamePage';
+
 import {
-  Switch,
   Route
 } from 'react-router-dom'
 import MainMenu from './components/MainMenu';
 
 class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      messages:['hello'],
-      text:'',
-      user:'Anonymous'
-    }
-  }
   render() {
-    return(
-      <div >
-              <Background />
-        {/* <Route>
-          <div>
-            <Switch>
-              <Route exactly component={Login} path="/login"/>
-              <Route exactly component={Registration} path="/registration"/>
-              <Route exact path="/" component={LandingPage}/>
-              <Route exact path="/MainMenu" component={MainMenu}/>
-              <Route exact path="/game" component={GamePage} />
-            </Switch>
+      if(this.props.login) {
+        return(
+          <div >
+            <Route exactly component={Login} path="/login"/>
+                  <Route exact path="/mainmenu" component={MainMenu}/>
+                  <Route exact path="/game" component={GamePage} />
+                  <Route exact component={Registration} path="/registration"/>
+                  <Background />
           </div>
-        </Route> */}
-      </div>
-    )
+        )} else {
+          return(
+            <div>
+              <Route exact component={Login} path="/login"/>
+              <Route exact path="/" component={LandingPage}/>
+              <Route exact component={Registration} path="/registration"/>
+            // <Background />
+            </div>
+          )
+        }
+      } 
+  }
 
+
+function mapStateToProps(state){
+  return{
+      login: state.login
   }
 }
-
-export default App;
+export default connect(mapStateToProps, null)(App);
