@@ -9,7 +9,7 @@ export default async (userData) =>{
     })
     console.log("data", userData)
     return{
-        type: "REGISTRATION-ACTION",
+        type: "REGISTRATION_ACTION",
         payload : data
     }
 }

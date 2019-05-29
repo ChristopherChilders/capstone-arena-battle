@@ -1,13 +1,17 @@
 export default(state = false, action={type:''}) => {
     // console.log(action);
     
-    if (action.type === "LOGIN_ACTION" ){ 
+    if (action.type === "LOGIN_ACTION"){ 
         console.log(action.payload);
-        let isValidId = false;
+        // let isValidId = false;
         if(action.payload.id){
-            isValidId=true
+            return true
         }
-        return isValidId
+
+    } else if (action.type === "REGISTRATION_ACTION"){
+        console.log("registration-action");
+        
+        return true
     } else if (action.type === "LOGOUT_ACTION") {
         return false
     } else {

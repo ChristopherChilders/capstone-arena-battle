@@ -9,13 +9,15 @@ class Registration extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            username: 'test11',
-            email: 'test@test.com',
-            password:'test',
+            username: '',
+            email: '',
+            password:'',
         }
     }
     render() {
-        if(this.props.id){
+        if(this.props.register){
+            console.log("this.props.id", this.props.id);
+            
             return(
                 <div>
                     <Redirect to='/login'/>
@@ -83,13 +85,13 @@ class Registration extends React.Component{
             password: this.state.password,
             username: this.state.username
         })
-        return this.state.id
+
     }
 }
 
 function mapStateToProps(state){
     return{
-        register: state.register
+        register: state.login
     }
 }
 function mapDispatchToProps(dispatch) {
