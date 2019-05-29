@@ -118,7 +118,7 @@ class Background extends React.Component{
                 width="450"
                 height="50"
                 />
-            <PlayerOneComponent {...this.state}/>
+            <PlayerOneComponent newHealth={this.state.characterLife1}/>
             <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
             <div>
@@ -129,21 +129,29 @@ class Background extends React.Component{
         
     )
     }
+    _monsterAttack=()=>{
+
+    }
     _setFirstAttack=()=>{
         console.log("_setDamage1 was called");
-        let currentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
+        let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
+        
+        let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
+        console.log(this.state.opponent1Attack1Damage)
         this.setState({
-            opponentLife1: currentHealth
+            opponentLife1: currentOpponentHealth,
+            characterLife1: currentPlayerHealth
         })
-        console.log(this.state)
+        // console.log(this.state)
     }
+    
     _setSecondAttack=()=>{
         console.log("_setDamage2 was called");
         let currentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
         this.setState({
             opponentLife1: currentHealth
         })
-        console.log(this.state)
+        // console.log(this.state)
     }
 
 
