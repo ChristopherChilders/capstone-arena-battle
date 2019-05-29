@@ -13,6 +13,7 @@ const Player = require('./models/Player');
 const Characters = require('./models/Character');
 const Opponents = require('./models/Opponent');
 const OpponentsAttack = require('./models/OpponentsAttack');
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -24,18 +25,18 @@ app.get('/', (req, res) => {
     // console.log(req)
     res.json(db)
 })
-// const path = require('path');
-// const socketIo = require('socket.io');
+// app.use(cors())
 const logInRouter = require('./routes/login');
 app.use('/login', logInRouter);
 
 app.post('/login', (req,res) => {
     console.log(req.body);
+}) 
+const registrationRouter = require('./routes/registration');
+app.use('/registration', registrationRouter);
+app.post('/registration', (req, res) => {
+    console.log(req.body)
 })
-
-
-// const registrationRouter = require('./routes/registrationRouter');
-// app.use('/registration', registrationRouter);
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({
@@ -44,8 +45,6 @@ const wss = new WebSocket.Server({
     port: 4000
 });
 
-app.use(express.urlencoded({extended: true}));
-
 wss.on('connection', async (socket) => {
     console.log('new connection');
     const attack = await Attack.getAll();
@@ -53,8 +52,13 @@ wss.on('connection', async (socket) => {
     const characters = await Characters.getAll();
     const opponents = await Opponents.getAll();
     const opponentsAttack = await OpponentsAttack.getAll();
+    // Websockets requires the information that you send to be one string
+    // Thus, our solution is this: 
     const data = {attack,player,characters,opponents,opponentsAttack}
     socket.send(JSON.stringify(data));
+    // { {object: array}, {object: array}, {object: array} }
+    // Then we send "data" from our database to our react app
+    socket.send(data);
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         console.log(`recieved: %s`, message);
@@ -67,5 +71,6 @@ wss.on('connection', async (socket) => {
 });
 
 server.listen(PORT, ()=> {
-    console.log('you can do this, Chris');
+    console.log('you can do this, Chris! No, he can't);
+
 })
