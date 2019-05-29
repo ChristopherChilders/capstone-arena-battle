@@ -1,8 +1,8 @@
-create table players (
+create TABLE players (
     id serial PRIMARY key,
     username VARCHAR(100),
     email VARCHAR(100),
-    password VARCHAR(100),
+    password VARCHAR(100)
 );
 
 create TABLE characters (

@@ -1,10 +1,12 @@
-export default(state = [], action={type:''}) => {
-    // console.log(action);
+export default(state = false, action={type:''}) => {
     
     if (action.type === "REGISTRATION_ACTION" ){ 
-        console.log(action.payload);
-        return action.payload.data
-        } else {
-            return state;
+        let hasValidId = false;
+        if(hasValidId){
+            hasValidId = true
         }
+        return hasValidId
+        } else {
+            return false
     }
+}

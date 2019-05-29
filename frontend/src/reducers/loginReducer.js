@@ -1,5 +1,5 @@
 export default(state = false, action={type:''}) => {
-    console.log(action);
+    // console.log(action);
     
     if (action.type === "LOGIN_ACTION" ){ 
         console.log(action.payload);

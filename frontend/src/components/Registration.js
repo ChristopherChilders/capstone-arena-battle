@@ -2,21 +2,26 @@ import React from 'react';
 import style from '../StyleSheets/Registration.module.css';
 import NavBar from '../components/Navbar';
 import registrationAction from '../actions/registrationAction';
-// import loginAction from '../actions/loginAction';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Redirect} from 'react-router-dom';
 class Registration extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            // id: '',
             username: 'test',
             email: 'test@test.com',
             password:'test',
-            // createdAt: null
         }
     }
     render() {
+        if(this.props.id){
+            return(
+                <div>
+                    <Redirect to='/login'/>
+                </div>
+            )
+        }
         return (
             <div>
                 <NavBar/>
@@ -80,14 +85,14 @@ class Registration extends React.Component{
     }
 }
 
-// function mapStateToProps(state){
-//     return{
-//         loggedIn: state.loggedIn
-//     }
-// }
+function mapStateToProps(state){
+    return{
+        register: state.register
+    }
+}
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         registrationAction: registrationAction
     }, dispatch)
 }
-export default connect(null, mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

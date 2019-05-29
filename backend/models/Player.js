@@ -2,24 +2,28 @@ const db = require('./conn');
 const bcrypt = require('bcryptjs');
 
 class Player {
-    // , created_at
     constructor(id, username, email, password) {
         this.id = id;
         this.userName = username;
         this.email = email;
         this.password = password;
-        // this.createdAt = created_at;
     }
-    // , created_at
     static add(username, email, password){
+
         return db.one(`
         insert into players
         (username, email, password)
         values
         ($1, $2, $3)
-        returning id, username, email, password`, [username, email, password])
+        returning id, username, email, password`, [username, email, Player.createPasswordHash(password)])
+        
         .then((data) => {
+            
+            // getting to here
+            console.log("data.id", data.id);
+            
             return data.id;
+            
         })
     }
 
@@ -36,7 +40,6 @@ class Player {
                     playerData.username,
                     playerData.email,
                     playerData.password
-                    // playerData.created_at
                 );
                 return aPlayer;
             })
@@ -75,20 +78,19 @@ class Player {
     }
 
     save(){
-        // created_at='${this.created_at}
         return db.result(`
         update players set
         username='${this.username}'
         email='${this.email}'
         password='${this.password}'
-        
         '`)
     }
 
-    setPassword(newPassword){
+    static createPasswordHash(newPassword){
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(newPassword, salt);
-        this.password = hash;
+        // this.password = hash;
+        return hash;
     }
 
     checkPassword(aPassword){

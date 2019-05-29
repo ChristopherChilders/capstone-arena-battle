@@ -31,9 +31,9 @@ app.post('/login', (req,res) => {
 }) 
 const registrationRouter = require('./routes/registration');
 app.use('/registration', registrationRouter);
-
-// const registrationRouter = require('./routes/registrationRouter');
-// app.use('/registration', registrationRouter);
+app.post('/registration', (req, res) => {
+    console.log(req.body)
+})
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({
