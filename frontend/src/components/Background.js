@@ -78,13 +78,6 @@ class Background extends React.Component{
             fill: '#FFFFFF',
             fillOpacity: '0',
         }
-        const healthStyle = {
-            stroke:'black',
-            strokeWidth: '2',
-            // strokeOpacity:"0.5",
-            fill: 'green',
-            fillOpacity: '100',
-        }
         const healthStyleRED = {
             stroke:'black',
             strokeWidth: '2',
@@ -96,6 +89,21 @@ class Background extends React.Component{
       return (
     <div>
         <svg width="1300" height="925" >
+
+            {/* SVG GRID BOX */}
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+                    <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
+                    </pattern>
+                    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+                    <rect width="80" height="80" fill="url(#smallGrid)"/>
+                    <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        {/* SVG GRID BOX END */}
                 <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
                 <rect 
                 x="5"
@@ -122,7 +130,6 @@ class Background extends React.Component{
             <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
             <div>
-
             <AttackButton name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
             </div>
     </div>
@@ -148,8 +155,11 @@ class Background extends React.Component{
     _setSecondAttack=()=>{
         console.log("_setDamage2 was called");
         let currentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
+        let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
         this.setState({
-            opponentLife1: currentHealth
+            opponentLife1: currentHealth,
+            characterLife1: currentPlayerHealth
+
         })
         // console.log(this.state)
     }
@@ -160,18 +170,3 @@ class Background extends React.Component{
 export default Background;
 
 
-// {/* SVG GRID BOX */}
-// {/* <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-//     <defs>
-//         <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
-//         <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
-//         </pattern>
-//         <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-//         <rect width="80" height="80" fill="url(#smallGrid)"/>
-//         <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
-//         </pattern>
-//     </defs>
-
-//     <rect width="100%" height="100%" fill="url(#grid)" />
-// </svg> */}
-// {/* SVG GRID BOX END */}
