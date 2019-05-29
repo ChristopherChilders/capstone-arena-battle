@@ -9,7 +9,7 @@ class Registration extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            username: 'test',
+            username: 'test11',
             email: 'test@test.com',
             password:'test',
         }
@@ -21,48 +21,50 @@ class Registration extends React.Component{
                     <Redirect to='/login'/>
                 </div>
             )
-        }
-        return (
-            <div>
-                <NavBar/>
-                <div className={style.registrationTitle}>
-                    <h1>Registration</h1>
-                </div>
-                <form 
-                onSubmit={this.handleSubmit}>
-                    <div className={style.registrationForm}>
-                    <label className={style.registrationLabel}>Username</label>
-                        <input 
-                            id="username"
-                            type="text"
-                            placeholder="Username"
-                            onChange={this.onChange}
-                            value={this.state.username}/>
-                    <label className={style.registrationLabel}>Password</label>
-                        <input 
-                            id="password"
-                            type="password"
-                            placeholder="Password"
-                            onChange={this.onChange}
-                            value={this.state.password}/>
-                    <label className={style.registrationLabel}>Email</label>
-                        <input 
-                            id="email"
-                            type="email"
-                            placeholder="Email"
-                            onChange={this.onChange}
-                            value={this.state.email}/>
-                            <div className={style.submitButton}>
-                                <button
-                                    type="submit"
-                                    onSubmit={this.handleSubmit}>
-                                    Submit
-                                </button>
-                            </div>
+        } else {
+            return (
+                <div>
+                    <NavBar/>
+                    <div className={style.registrationTitle}>
+                        <h1>Registration</h1>
                     </div>
-                </form>
-            </div>
-        )
+                    <form 
+                    onSubmit={this.handleSubmit}>
+                        <div className={style.registrationForm}>
+                        <label className={style.registrationLabel}>Username</label>
+                            <input 
+                                id="username"
+                                type="text"
+                                placeholder="Username"
+                                onChange={this.onChange}
+                                value={this.state.username}/>
+                                <label className={style.registrationLabel}>Email</label>
+                            <input 
+                                id="email"
+                                type="email"
+                                placeholder="Email"
+                                onChange={this.onChange}
+                                value={this.state.email}/>
+                        <label className={style.registrationLabel}>Password</label>
+                            <input 
+                                id="password"
+                                type="password"
+                                placeholder="Password"
+                                onChange={this.onChange}
+                                value={this.state.password}/>
+                        
+                                <div className={style.submitButton}>
+                                    <button
+                                        type="submit"
+                                        onSubmit={this.handleSubmit}>
+                                        Submit
+                                    </button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            )
+        }
     }
     onChange = (e) => {
         console.log("handleChange", e.target.value);

@@ -1,14 +1,13 @@
 import axios from "axios";
 
-export default (userData) =>{
-    console.log("userData", userData);
+export default async (userData) =>{
     
-    const {data} = axios({
+    const {data} = await axios({
         url : '/registration',
         method : "POST",
         data : userData
     })
-    console.log("data", data)
+    console.log("data", userData)
     return{
         type: "REGISTRATION-ACTION",
         payload : data

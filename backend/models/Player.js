@@ -20,9 +20,9 @@ class Player {
         .then((data) => {
             
             // getting to here
-            console.log("data.id", data.id);
+            console.log("data.email", data.email);
             
-            return data.id;
+            return data;
             
         })
     }

@@ -11,23 +11,18 @@ async function playerRegistration(req,res) {
 
 
 async function addPlayer(req, res) {
-    console.log(req.body);
+    console.log("req.body",req.body);
     console.log('======================');
     const username = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
-    // const hashedPassword = setPassword(req.body.password);
-    // console.log(hashedPassword);
-    Player.add(username, password, email)
-    // .then(async () => {
-    //     // can log req.body.email here
-    //     const player = await Player.getByEmail(`${req.body.email}`);
-    //     console.log("addedplayer", player);
-    //     // player.setPassword(`${req.body.password}`);
-    //     // await player.updatePassword();
-    //     // console.log('you did the thing')
-        
-    // })
+    console.log("req.body.email", req.body.email);
+    
+
+    const newPlayer = await Player.add(username, email, password);
+    res.json(newPlayer);
+    console.log(`the added player was givien the email ${newPlayer.email}`);
+
 }
 module.exports = {
     addPlayer,
