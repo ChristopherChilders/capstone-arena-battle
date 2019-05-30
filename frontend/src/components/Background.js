@@ -150,37 +150,35 @@ class Background extends React.Component{
     </div>
     )
     }
-    _monsterAttack=()=>{
 
-    }
     _setFirstAttack=()=>{
         if (this.state.start){
 
             console.log("_setDamage1 was called");
             let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
             
-            let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
             console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
-                characterLife1: currentPlayerHealth
-            }, this._endGame)
+            }, this._monsterAttack,this._endGame)
         }
     }
     
     _setSecondAttack=()=>{
         if (this.state.start){
-
             console.log("_setDamage1 was called");
             let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
-            
-            let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
             console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
-                characterLife1: currentPlayerHealth
-            }, this._endGame)
+            },this._monsterAttack, this._endGame)
         }
+    }
+    _monsterAttack=()=>{
+        let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
+        this.setState({
+            characterLife1: currentPlayerHealth
+        }, this._endGame,this.monsterAttack)
     }
     _gameStart=()=>{
         this.setState({
@@ -189,16 +187,31 @@ class Background extends React.Component{
     }
 
     _endGame=()=>{
-        if (this.state.characterLife1<= 1 || this.state.opponentLife1 <= 1){
+        if (this.state.characterLife1<= 1){
             console.log('look at me, currentHealth Check <1')
             this.setState({
                 end: true
-            },()=>{
+            },
+            ()=>{
                 setTimeout(()=>{
                     alert('GAME OVER, I AM INEVITABLE')
                 },50)
-            })
-        } 
+            }
+            )
+        }
+        if (this.state.opponentLife1<= 1){
+            console.log('look at me, currentHealth Check <1')
+            this.setState({
+                end: true
+            },
+            ()=>{
+                setTimeout(()=>{
+                    alert('YOU WIN')
+                },50)
+            }
+            )
+        }
+        
     }
 }
 
