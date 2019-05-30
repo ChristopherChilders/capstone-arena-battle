@@ -9,7 +9,7 @@ export default async (userData) =>{
         method : "POST"
     })
     console.log("data", data);
-    
+    localStorage.setItem('login','true')
     return{
         type: "LOGIN_ACTION",
         payload : data
