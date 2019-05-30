@@ -10,6 +10,7 @@ export default function playerOneComponent({newHealth}) {
     fill: 'green',
     fillOpacity: '100',
 }
+
 // console.log(health)
 return (
   <svg width="100%" height="100%">
@@ -20,5 +21,6 @@ return (
       height="50"
       />
   </svg>
+
 )
 }

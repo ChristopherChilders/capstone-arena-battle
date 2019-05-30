@@ -1,7 +1,6 @@
 import React from 'react';
 // import style from '../App.module.css';
 import {connect} from 'react-redux';
-import Background from './components/Background';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import LandingPage from './components/LandingPage';
@@ -20,7 +19,7 @@ class App extends React.Component{
                   <Route exact path="/mainmenu" component={MainMenu}/>
                   {/* <Route exact path="/game" component={GamePage} /> */}
                   <Route exact component={Registration} path="/registration"/>
-                  <Background />
+                  
           </div>
         )} else {
           return(
@@ -28,7 +27,6 @@ class App extends React.Component{
               <Route exact component={Login} path="/login"/>
               <Route exact path="/" component={LandingPage}/>
               <Route exact component={Registration} path="/registration"/>
-            {/* <Background /> */}
             </div>
           )
         }

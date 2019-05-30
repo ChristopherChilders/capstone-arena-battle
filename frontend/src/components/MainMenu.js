@@ -1,31 +1,22 @@
 import React from 'react'
 import style from '../StyleSheets/MainMenu.module.css'
-import Embroider from '../Images/TitleEmbroider.png'
+// import Embroider from '../Images/TitleEmbroider.png';
+import Background from './Background';
+
 
 
 class MainMenu extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { }
-    }
-    componentDidMount(){
-        const url = `ws://localhost:4000/ws`; 
-        this.connection = new WebSocket(url);
-    
-        this.connection.onmessage = (e) => {
-        console.log(e);
-        console.log(e.data);
-        this.setState({
-            email: '',
-            password: ''
-        })
+        this.state = { 
+
         }
     }
     render () {
         return (
             <div className={style.heroimage}>
-                <div className={style.MenuItems}>
+                {/* <div className={style.MenuItems}>
                     <div className={style.MenuItem}>
                         <h1> Start </h1>
                     </div>
@@ -38,7 +29,10 @@ class MainMenu extends React.Component {
                         <h1> Log Out </h1>
                         <img src={Embroider}></img>
                     </div>
-                </div>
+                </div> */}
+                    <div>
+                        <Background/>
+                    </div>
             </div>
         )
     }
