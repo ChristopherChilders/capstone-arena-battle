@@ -78,15 +78,7 @@ class Background extends React.Component{
 
     render() {
 
-        const imageStyle ={
-            fillOpacity:"0",
-        }
-        const style = {
-            stroke:'#e71818',
-            strokeWidth: '5',
-            fill: '#FFFFFF',
-            fillOpacity: '0',
-        }
+
         const healthStyleRED = {
             stroke:'black',
             strokeWidth: '2',
@@ -101,19 +93,13 @@ class Background extends React.Component{
         <div>
             <button onClick={this._gameStart}>START</button>
         </div>
+        <div>
+            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
+            </div>
         <svg  width="1300" height="925" >
-                <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
+                <image x="5" y="5" width="1200" height="900"href={stickImage}/>
                     <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
                     <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
-                <rect 
-                x="5"
-                y="5"
-                style={style}
-                width="1200"
-                height="900"
-                rx="15"
-                ry="15"
-                />
                 <rect style={healthStyleRED}
                 x="15"
                 y="55"
@@ -129,9 +115,7 @@ class Background extends React.Component{
             <PlayerOneComponent  newHealth={this.state.characterLife1} />
             <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
-            <div>
-            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
-            </div>
+
     </div>
     )
     }
