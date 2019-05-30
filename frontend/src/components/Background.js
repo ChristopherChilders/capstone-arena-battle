@@ -160,7 +160,7 @@ class Background extends React.Component{
             console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
-            }, this._monsterAttack,this._endGame)
+            },()=>{setTimeout(this._monsterAttack,200)} ,this._endGame)
         }
     }
     
@@ -171,14 +171,14 @@ class Background extends React.Component{
             console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
-            },this._monsterAttack, this._endGame)
+            },()=>{setTimeout(this._monsterAttack,200)}, this._endGame)
         }
     }
     _monsterAttack=()=>{
         let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
         this.setState({
             characterLife1: currentPlayerHealth
-        }, this._endGame,this.monsterAttack)
+        }, this._endGame)
     }
     _gameStart=()=>{
         this.setState({
