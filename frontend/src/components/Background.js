@@ -1,5 +1,7 @@
 import React from 'react'
 import stickImage from '../Images/pixil-frame-0.png';
+import sicklyCobald from '../Images/sicklycobald.png';
+import notVictor from '../Images/NOTvictor.png';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
@@ -116,6 +118,8 @@ class Background extends React.Component{
             </svg>
         {/* SVG GRID BOX END */}
                 <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
+                    <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
+                    <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
                 <rect 
                 x="5"
                 y="5"
@@ -165,15 +169,18 @@ class Background extends React.Component{
     }
     
     _setSecondAttack=()=>{
-        console.log("_setDamage2 was called");
-        let currentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
-        let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
-        this.setState({
-            opponentLife1: currentHealth,
-            characterLife1: currentPlayerHealth
+        if (this.state.start){
 
-        })
-        // console.log(this.state)
+            console.log("_setDamage1 was called");
+            let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
+            
+            let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
+            console.log('damange calculation')
+            this.setState({
+                opponentLife1: currentOpponentHealth,
+                characterLife1: currentPlayerHealth
+            }, this._endGame)
+        }
     }
     _gameStart=()=>{
         this.setState({
@@ -189,11 +196,10 @@ class Background extends React.Component{
             },()=>{
                 setTimeout(()=>{
                     alert('GAME OVER, I AM INEVITABLE')
-                },200)
+                },50)
             })
         } 
     }
-
 }
 
 export default Background;
