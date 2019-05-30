@@ -90,12 +90,7 @@ class Background extends React.Component{
       return (
           
     <div>
-        <div>
-            <button onClick={this._gameStart}>START</button>
-        </div>
-        <div>
-            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
-            </div>
+
         <svg  width="1300" height="925" >
                 <image x="5" y="5" width="1200" height="900"href={stickImage}/>
                     <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
@@ -115,7 +110,12 @@ class Background extends React.Component{
             <PlayerOneComponent  newHealth={this.state.characterLife1} />
             <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
-
+        <div>
+            <button onClick={this._gameStart}>START</button>
+        </div>
+        <div>
+            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
+            </div>
     </div>
     )
     }
