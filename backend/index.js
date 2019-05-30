@@ -71,6 +71,6 @@ wss.on('connection', async (socket) => {
 });
 
 server.listen(PORT, ()=> {
-    console.log('you can do this, Chris! No, he can't);
+    console.log('you can do this, Chris! No, he cannot');
 
 })

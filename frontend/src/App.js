@@ -18,7 +18,7 @@ class App extends React.Component{
           <div >
             <Route exactly component={Login} path="/login"/>
                   <Route exact path="/mainmenu" component={MainMenu}/>
-                  <Route exact path="/game" component={GamePage} />
+                  {/* <Route exact path="/game" component={GamePage} /> */}
                   <Route exact component={Registration} path="/registration"/>
                   <Background />
           </div>
@@ -28,7 +28,7 @@ class App extends React.Component{
               <Route exact component={Login} path="/login"/>
               <Route exact path="/" component={LandingPage}/>
               <Route exact component={Registration} path="/registration"/>
-            // <Background />
+            {/* <Background /> */}
             </div>
           )
         }
