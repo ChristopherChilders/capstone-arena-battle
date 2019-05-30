@@ -1,5 +1,5 @@
 import React from 'react'
-import stickImage from '../Images/pixil-frame-0.png';
+import stickImage from '../Images/Background2.gif';
 import sicklyCobald from '../Images/sicklycobald.png';
 import notVictor from '../Images/NOTvictor.png';
 import PlayerOneComponent from './playerOneComponent';
@@ -28,29 +28,27 @@ class Background extends React.Component{
         const url = `ws://localhost:4000/ws`;
         this.connection = new WebSocket(url);
         this.connection.onmessage = (e) => {
-        console.log(e.data);
+        // console.log(e.data);
         let newData =JSON.parse(e.data);
         console.log(newData)
-        
-
             this.setState({
     
                 chosenAttack:0,
                 // characters
-                // characters_id1: newData.attack[0].charactersId,
+                characters_id1: newData.attack[0].charactersId,
                 characterName1: newData.characters[0].name,
                 characterPower1: newData.characters[0].power,
                 characterToughness1: newData.characters[0].toughness,
                 characterLife1: newData.characters[0].life,
     
                 //  character attacks
-                // id: newData.attack[0].id,
+                id: newData.attack[0].id,
                 character1Attack1Name: newData.attack[0].name,
                 character1Attack1Summary: newData.attack[0].summary,
                 character1Attack1Damage: newData.attack[0].damage,
-                character1Attack2Name: newData.attack[1].name,
-                character1Attack2Summary: newData.attack[1].summary,
                 character1Attack2Damage: newData.attack[1].damage,
+                character1Attack2Name: newData.attack[1].name,
+
 
                 // Opponents
                 opponentName1: newData.opponents[0].name,
@@ -59,12 +57,14 @@ class Background extends React.Component{
                 opponentToughness1: newData.opponents[0].toughness,
     
                 // opponent1 attacks
-                opponent1Attack1Name: newData.opponentsAttack[0].name,
-                opponent1Attack1Summary: newData.opponentsAttack[0].summary,
                 opponent1Attack1Damage: newData.opponentsAttack[0].damage,
-                opponent1Attack2Name: newData.opponentsAttack[1].name,
-                opponent1Attack2Summary: newData.opponentsAttack[1].summary,
                 opponent1Attack2Damage: newData.opponentsAttack[1].damage,
+                opponent1Attack3Damage: newData.opponentsAttack[2].damage,
+                opponent1Attack4Damage: newData.opponentsAttack[3].damage,
+                opponent1Attack5Damage: newData.opponentsAttack[4].damage,
+                opponent1Attack6Damage: newData.opponentsAttack[5].damage,
+                opponent1Attack7Damage: newData.opponentsAttack[6].damage,
+                opponent1Attack8Damage: newData.opponentsAttack[7].damage,
     
                 // abilities: newData.attack[0].abilities,
                 // targets: newData.attack[0].targets,
@@ -102,21 +102,6 @@ class Background extends React.Component{
             <button onClick={this._gameStart}>START</button>
         </div>
         <svg  width="1300" height="925" >
-
-            {/* SVG GRID BOX */}
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
-                    <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
-                    </pattern>
-                    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-                    <rect width="80" height="80" fill="url(#smallGrid)"/>
-                    <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-        {/* SVG GRID BOX END */}
                 <image x="5" y="5" width="1200" height="900"href={stickImage} style={imageStyle}/>
                     <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
                     <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
@@ -154,10 +139,10 @@ class Background extends React.Component{
     _setFirstAttack=()=>{
         if (this.state.start){
 
-            console.log("_setDamage1 was called");
+            console.log("_setFirstAttack was called");
             let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
             
-            console.log('damange calculation')
+            // console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
             },()=>{setTimeout(this._monsterAttack,200)} ,this._endGame)
@@ -166,16 +151,38 @@ class Background extends React.Component{
     
     _setSecondAttack=()=>{
         if (this.state.start){
-            console.log("_setDamage1 was called");
+            console.log("_setSecondAttack was called");
+            console.log(this.state.character1Attack2Name)
             let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
-            console.log('damange calculation')
+            // console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
             },()=>{setTimeout(this._monsterAttack,200)}, this._endGame)
         }
     }
     _monsterAttack=()=>{
-        let currentPlayerHealth = this.state.characterLife1-this.state.opponent1Attack1Damage
+        let attackArray =[this.state.opponent1Attack1Damage, this.state.opponent1Attack2Damage, this.state.opponent1Attack3Damage, this.state.opponent1Attack4Damage]
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+        
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+        
+            // Pick a remaining element...
+              randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+        
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+            }
+            
+            console.log(array);
+            return array;
+        }
+        shuffle(attackArray)
+        let currentPlayerHealth = this.state.characterLife1-attackArray[0];
         this.setState({
             characterLife1: currentPlayerHealth
         }, this._endGame)
