@@ -134,9 +134,11 @@ class Background extends React.Component{
 
     _setFirstAttack=()=>{
         if (this.state.start){
+            let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
 
             // console.log("_setFirstAttack was called");
             this.setState({
+                opponentLife1: currentOpponentHealth,
                 player1Attack:true,
                 opponent1Attack:true
             },()=>{setTimeout(this._monsterAttack,300)},this._endGame)
