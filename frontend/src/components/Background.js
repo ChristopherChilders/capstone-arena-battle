@@ -1,11 +1,13 @@
 import React from 'react'
 import backgroundImage from '../Images/Background2.gif';
+
 import diceMan2 from '../Images/diceman2.gif';
 import gitguy2 from '../Images/gitguy2.gif';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
 import styled from 'styled-components';
+import style from '../StyleSheets/Buttons.module.css'
 
 class Background extends React.Component{
     constructor(props){
@@ -100,13 +102,15 @@ class Background extends React.Component{
         // console.log(this.state.damage)
       return (
           
-    <div>
-        <SvgWrapper >
-            <svg 
+
+    <div className={style.gameplay}>
+
+        <div>
+          <SvgWrapper>
+           <svg 
             width="75%" height="75%" viewBox="0 0 1200 900" >
                     <image x="0" y="0" width="1200" height="900"href={backgroundImage}/>
                         <image x="650" y="230" width="50%" height="60%" href={diceMan2} />
-
                         <image x="-75" y="230" width="50%" height="60%" href={gitguy2} />
 
                     <rect style={healthStyleRED}
@@ -126,11 +130,14 @@ class Background extends React.Component{
                 <rect x="0" y="0" width="100%" height="100%" style={borderStyle}/>
             </svg>
         </SvgWrapper>
-
-        <div>
-            <button onClick={this._gameStart}>START</button>
         </div>
-        <div>
+        <div className={style.allButtons}>
+            <div>
+                <button 
+                onClick={this._gameStart}
+                className={style.startButton}
+                >START</button>
+            </div>
             <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
         </div>
     </div>
