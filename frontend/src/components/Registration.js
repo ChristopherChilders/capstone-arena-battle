@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../StyleSheets/Registration.module.css';
 import NavBar from '../components/Navbar';
 import registrationAction from '../actions/registrationAction';
+import Embroider from '../Images/TitleEmbroider.png'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Redirect} from 'react-router-dom';
@@ -62,6 +63,7 @@ class Registration extends React.Component{
                                         Submit
                                     </button>
                                 </div>
+                                <img src={Embroider} alt=''></img>
                         </div>
                     </form>
                 </div>
