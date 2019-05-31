@@ -1,5 +1,5 @@
 import React from 'react'
-import stickImage from '../Images/Background2.gif';
+import backgroundImage from '../Images/Background2.gif';
 import sicklyCobald from '../Images/sicklycobald.png';
 import notVictor from '../Images/NOTvictor.png';
 import PlayerOneComponent from './playerOneComponent';
@@ -91,25 +91,28 @@ class Background extends React.Component{
           
     <div className={style.gameplay}>
 
-        <svg  width="1300" height="925" >
-                <image x="5" y="5" width="1200" height="900"href={stickImage}/>
-                    <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
-                    <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
-                <rect style={healthStyleRED}
-                x="15"
-                y="55"
-                width="450"
-                height="50"
-                />
-                <rect style={healthStyleRED}
-                x="745"
-                y="55"
-                width="450"
-                height="50"
-                />
-            <PlayerOneComponent  newHealth={this.state.characterLife1} />
-            <Opponents newHealth={this.state.opponentLife1}/>
-        </svg>
+        <div>
+            <svg 
+            width="100%" height="100%" viewBox="0 0 1200 900">
+                    <image x="0" y="0" width="1200" height="900"href={backgroundImage}/>
+                        <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
+                        <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
+                    <rect style={healthStyleRED}
+                    x="15"
+                    y="55"
+                    width="450"
+                    height="50"
+                    />
+                    <rect style={healthStyleRED}
+                    x="745"
+                    y="55"
+                    width="450"
+                    height="50"
+                    />
+                <PlayerOneComponent  newHealth={this.state.characterLife1} />
+                <Opponents newHealth={this.state.opponentLife1}/>
+            </svg>
+        </div>
         <div className={style.allButtons}>
             <div>
                 <button 
