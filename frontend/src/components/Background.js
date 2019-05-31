@@ -2,7 +2,6 @@ import React from 'react'
 import backgroundImage from '../Images/Background2.gif';
 
 import diceMan2 from '../Images/diceman2.gif';
-import gitguy2 from '../Images/gitguy2.gif';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
@@ -22,7 +21,8 @@ class Background extends React.Component{
             targets: '',
             startHealth: 1,
             start: false,
-            end: false
+            end: false,
+            player1Attack: false
         }
     }
       componentDidMount(){
@@ -106,7 +106,6 @@ class Background extends React.Component{
             width="75%" height="75%" viewBox="0 0 1200 900" >
                     <image x="0" y="0" width="1200" height="900"href={backgroundImage}/>
                         <image x="650" y="230" width="50%" height="60%" href={diceMan2} />
-                        <image x="-75" y="230" width="50%" height="60%" href={gitguy2} />
                     <rect style={healthStyleRED}
                     x="15"
                     y="55"
@@ -119,7 +118,7 @@ class Background extends React.Component{
                     width="450"
                     height="50"
                     />
-                <PlayerOneComponent  newHealth={this.state.characterLife1} />
+                <PlayerOneComponent  newHealth={this.state.characterLife1} attackGate={this.state.player1Attack} />
                 <Opponents newHealth={this.state.opponentLife1}/>
                 <rect x="0" y="0" width="100%" height="100%" style={borderStyle}/>
             </svg>
@@ -147,7 +146,8 @@ class Background extends React.Component{
             // console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
-            },()=>{setTimeout(this._monsterAttack,200)} ,this._endGame)
+                player1Attack:true,
+            },()=>{setTimeout(this._monsterAttack,400)} ,this._endGame)
         }
     }
     
@@ -159,7 +159,8 @@ class Background extends React.Component{
             // console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
-            },()=>{setTimeout(this._monsterAttack,200)}, this._endGame)
+                player1Attack:true,
+            },()=>{setTimeout(this._monsterAttack,400)}, this._endGame)
         }
     }
     _monsterAttack=()=>{
@@ -186,7 +187,8 @@ class Background extends React.Component{
         shuffle(attackArray)
         let currentPlayerHealth = this.state.characterLife1-attackArray[0];
         this.setState({
-            characterLife1: currentPlayerHealth
+            characterLife1: currentPlayerHealth,
+            player1Attack:false
         }, this._endGame)
     }
     _gameStart=()=>{
