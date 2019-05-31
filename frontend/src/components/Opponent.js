@@ -17,7 +17,7 @@ export default function Opponent({newHealth}) {
   return (
     <svg width="100%" height="100%">
           <rect style={healthStyleGREEN}
-        x="745"
+        x="735"
         y="55"
         width={healthCalc}
         height="50"
