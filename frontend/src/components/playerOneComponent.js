@@ -38,19 +38,4 @@ if(attackGate){
     </svg>
   )
 }
-
-
-
-// return (
-//   <svg width="100%" height="100%">
-//         <rect style={healthStyleGREEN}
-//       x="15"
-//       y="55"
-//       width={healthCalc}
-//       height="50"
-//       />
-//       <image x="-75" y="230" width="50%" height="60%" href={gitguy2Attack}/>
-//       <image x="-75" y="230" width="50%" height="60%" href={gitguy2} />
-//   </svg>
-// )
 }

@@ -140,14 +140,13 @@ class Background extends React.Component{
         if (this.state.start){
 
             console.log("_setFirstAttack was called");
-            let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
-            
+            // let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
             // console.log('damange calculation')
             this.setState({
-                opponentLife1: currentOpponentHealth,
+                // opponentLife1: currentOpponentHealth,
                 player1Attack:true,
                 opponent1Attack:true
-            },()=>{setTimeout(this._monsterAttack,400)} ,this._endGame)
+            },()=>{setTimeout(this._monsterAttack,300)},this._endGame)
         }
     }
     
@@ -161,7 +160,7 @@ class Background extends React.Component{
                 opponentLife1: currentOpponentHealth,
                 player1Attack:true,
                 opponent1Attack:true
-            },()=>{setTimeout(this._monsterAttack,200)}, this._endGame)
+            },()=>{setTimeout(this._monsterAttack,300)}, this._endGame)
         }
     }
     _monsterAttack=()=>{
@@ -187,8 +186,12 @@ class Background extends React.Component{
         }
         shuffle(attackArray)
         let currentPlayerHealth = this.state.characterLife1-attackArray[0];
+        let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
+            
         this.setState({
             characterLife1: currentPlayerHealth,
+            opponentLife1: currentOpponentHealth,
+
             player1Attack:false,
             opponent1Attack: false,
         }, this._endGame)
