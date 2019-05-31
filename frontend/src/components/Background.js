@@ -1,7 +1,7 @@
 import React from 'react'
 import backgroundImage from '../Images/Background2.gif';
-import sicklyCobald from '../Images/sicklycobald.png';
-import notVictor from '../Images/NOTvictor.png';
+import diceMan2 from '../Images/diceman2.gif';
+import gitguy2 from '../Images/gitguy2.gif';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
@@ -83,7 +83,6 @@ class Background extends React.Component{
         margin-left: auto;
         margin-right: auto;
         width: 80%;
-
         `;
         const borderStyle ={
             stroke:'black',
@@ -106,8 +105,10 @@ class Background extends React.Component{
             <svg 
             width="75%" height="75%" viewBox="0 0 1200 900" >
                     <image x="0" y="0" width="1200" height="900"href={backgroundImage}/>
-                        <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
-                        <image x="-180" y="100" width="75%" height="75%" href={notVictor} />
+                        <image x="650" y="230" width="50%" height="60%" href={diceMan2} />
+
+                        <image x="-75" y="230" width="50%" height="60%" href={gitguy2} />
+
                     <rect style={healthStyleRED}
                     x="15"
                     y="55"
