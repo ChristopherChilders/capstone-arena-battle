@@ -1,10 +1,11 @@
 import React from 'react'
-import stickImage from '../Images/Background2.gif';
+import backgroundImage from '../Images/Background2.gif';
 import sicklyCobald from '../Images/sicklycobald.png';
 import notVictor from '../Images/NOTvictor.png';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
+import styled from 'styled-components';
 
 class Background extends React.Component{
     constructor(props){
@@ -77,24 +78,34 @@ class Background extends React.Component{
     }
 
     render() {
+        const SvgWrapper = styled.div`
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
 
-
+        `;
+        const borderStyle ={
+            stroke:'black',
+            strokeWidth: '5',
+            fill: '#FFFFFF',
+            fillOpacity: '0',
+        };
         const healthStyleRED = {
             stroke:'black',
             strokeWidth: '2',
             // strokeOpacity:"0.5",
             fill: 'red',
             fillOpacity: '100',
-        }
+        };
         // console.log(this.state.damage)
       return (
           
     <div>
-        <div>
-
+        <SvgWrapper >
             <svg 
-            width="100%" height="100%" viewBox="0 0 1200 900">
-                    <image x="0" y="0" width="1200" height="900"href={stickImage}/>
+            width="75%" height="75%" viewBox="0 0 1200 900" >
+                    <image x="0" y="0" width="1200" height="900"href={backgroundImage}/>
                         <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
                         <image x="-180" y="100" width="75%" height="75%" href={notVictor} />
                     <rect style={healthStyleRED}
@@ -111,14 +122,16 @@ class Background extends React.Component{
                     />
                 <PlayerOneComponent  newHealth={this.state.characterLife1} />
                 <Opponents newHealth={this.state.opponentLife1}/>
+                <rect x="0" y="0" width="100%" height="100%" style={borderStyle}/>
             </svg>
-        </div>
+        </SvgWrapper>
+
         <div>
             <button onClick={this._gameStart}>START</button>
         </div>
         <div>
             <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
-            </div>
+        </div>
     </div>
     )
     }
@@ -208,6 +221,8 @@ class Background extends React.Component{
         
     }
 }
+
+
 
 export default Background;
 
