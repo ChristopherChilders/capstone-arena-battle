@@ -1,0 +1,38 @@
+.startButton{
+    width: 5rem;
+    height: 2rem;
+    text-align: center;
+    padding-bottom: 5px;
+    color: black;
+    background-color: #CCA03A;
+    border: 1.5px solid black;
+    font-weight: 800;
+    font-size: 14px;
+}
+.attackButtons{
+    height: 2rem;
+    padding-top: .5rem;
+}
+.attackButton{
+    height: 1.5rem;
+    width: 100px;
+    color: black;
+    background-color: #CCA03A;
+    border: 1.5px solid black;
+    font-weight: 800;
+    font-size: 13px;
+    margin: .5rem;
+
+}
+.allButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.submitButton{
+    color: black;
+    background-color: #CCA03A;
+    border: 1.5px solid black;
+    font-weight: 800;
+    font-size: 13px;
+}

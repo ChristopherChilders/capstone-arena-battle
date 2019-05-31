@@ -1,12 +1,16 @@
 import React from 'react'
-
+import style from '../StyleSheets/Buttons.module.css'
 export default function AttackButton({name,doDamage1, doDamage2, name2}) {
 
     return (
-        <div>
-            <button onClick={doDamage1} >{name}
+        <div className={style.attackButtons}>
+            <button 
+            className={style.attackButton}
+            onClick={doDamage1} >{name}
             </button>
-            <button onClick={doDamage2} >{name2} 
+            <button 
+            className={style.attackButton}
+            onClick={doDamage2} >{name2} 
             </button>
         </div>
     )

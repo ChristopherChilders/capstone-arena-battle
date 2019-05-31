@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../StyleSheets/Login.module.css'
 import loginAction from '../actions/loginAction'
 import NavBar from '../components/Navbar'
+import styles from '../StyleSheets/Buttons.module.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -46,6 +47,7 @@ class Login extends React.Component{
                     onChange={this.handleChange}/>
                     <div className={style.submitButton}>
                     <button 
+                    className={styles.submitButton}
                     type="submit"
                     onSubmit={this.handleSubmit}
                     >
