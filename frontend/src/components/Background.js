@@ -176,11 +176,11 @@ class Background extends React.Component{
         }
         shuffle(attackArray)
         let currentPlayerHealth = this.state.characterLife1-attackArray[0];
-        let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
+        // let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
             
         this.setState({
             characterLife1: currentPlayerHealth,
-            opponentLife1: currentOpponentHealth,
+            // opponentLife1: currentOpponentHealth,
 
             player1Attack:false,
             opponent1Attack: false,
