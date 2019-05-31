@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fec5ab46.chunk.css",
+    "main.js": "/static/js/main.ff8be527.chunk.js",
+    "main.js.map": "/static/js/main.ff8be527.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.da8c9fc8.chunk.js": "/static/js/2.da8c9fc8.chunk.js",
+    "static/js/2.da8c9fc8.chunk.js.map": "/static/js/2.da8c9fc8.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d8532d0220caed5ce2a69faaf6ff7999.js": "/precache-manifest.d8532d0220caed5ce2a69faaf6ff7999.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.fec5ab46.chunk.css.map": "/static/css/main.fec5ab46.chunk.css.map",
+    "static/media/Background2.gif": "/static/media/Background2.d17a3fa7.gif",
+    "static/media/diceman2.gif": "/static/media/diceman2.c2c023be.gif",
+    "static/media/gitguy2(attack).gif": "/static/media/gitguy2(attack).07225669.gif",
+    "static/media/gitguy2.gif": "/static/media/gitguy2.674f833e.gif"
+  }
+}

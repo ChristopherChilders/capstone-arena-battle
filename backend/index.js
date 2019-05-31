@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const path = require('path');
+
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const PORT = process.env.PORT;
@@ -14,6 +16,8 @@ const Characters = require('./models/Character');
 const Opponents = require('./models/Opponent');
 const OpponentsAttack = require('./models/OpponentsAttack');
 
+
+app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({
