@@ -59,7 +59,7 @@ wss.on('connection', async (socket) => {
     // { {object: array}, {object: array}, {object: array} }
     // Then we send "data" from our database to our react app
     // socket.send(data);
-    // console.log(data)
+    // console.log(data)git 
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         // console.log(`recieved: %s`, message);
