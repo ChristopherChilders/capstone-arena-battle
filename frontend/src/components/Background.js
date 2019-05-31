@@ -1,7 +1,6 @@
 import React from 'react'
 import backgroundImage from '../Images/Background2.gif';
 
-import diceMan2 from '../Images/diceman2.gif';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
@@ -22,7 +21,8 @@ class Background extends React.Component{
             startHealth: 1,
             start: false,
             end: false,
-            player1Attack: false
+            player1Attack: false,
+            opponent1Attack: false
         }
     }
       componentDidMount(){
@@ -105,7 +105,6 @@ class Background extends React.Component{
            <svg 
             width="75%" height="75%" viewBox="0 0 1200 900" >
                     <image x="0" y="0" width="1200" height="900"href={backgroundImage}/>
-                        <image x="650" y="230" width="50%" height="60%" href={diceMan2} />
                     <rect style={healthStyleRED}
                     x="15"
                     y="55"
@@ -119,7 +118,7 @@ class Background extends React.Component{
                     height="50"
                     />
                 <PlayerOneComponent  newHealth={this.state.characterLife1} attackGate={this.state.player1Attack} />
-                <Opponents newHealth={this.state.opponentLife1}/>
+                <Opponents newHealth={this.state.opponentLife1} attackGate={this.state.opponent1Attack}/>
                 <rect x="0" y="0" width="100%" height="100%" style={borderStyle}/>
             </svg>
         </SvgWrapper>
@@ -147,6 +146,7 @@ class Background extends React.Component{
             this.setState({
                 opponentLife1: currentOpponentHealth,
                 player1Attack:true,
+                opponent1Attack:true
             },()=>{setTimeout(this._monsterAttack,400)} ,this._endGame)
         }
     }
@@ -160,7 +160,8 @@ class Background extends React.Component{
             this.setState({
                 opponentLife1: currentOpponentHealth,
                 player1Attack:true,
-            },()=>{setTimeout(this._monsterAttack,400)}, this._endGame)
+                opponent1Attack:true
+            },()=>{setTimeout(this._monsterAttack,200)}, this._endGame)
         }
     }
     _monsterAttack=()=>{
@@ -188,7 +189,8 @@ class Background extends React.Component{
         let currentPlayerHealth = this.state.characterLife1-attackArray[0];
         this.setState({
             characterLife1: currentPlayerHealth,
-            player1Attack:false
+            player1Attack:false,
+            opponent1Attack: false,
         }, this._endGame)
     }
     _gameStart=()=>{
