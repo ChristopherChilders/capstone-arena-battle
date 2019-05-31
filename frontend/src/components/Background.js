@@ -96,7 +96,7 @@ class Background extends React.Component{
             width="100%" height="100%" viewBox="0 0 1200 900">
                     <image x="0" y="0" width="1200" height="900"href={stickImage}/>
                         <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
-                        <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
+                        <image x="-180" y="100" width="75%" height="75%" href={notVictor} />
                     <rect style={healthStyleRED}
                     x="15"
                     y="55"
@@ -104,7 +104,7 @@ class Background extends React.Component{
                     height="50"
                     />
                     <rect style={healthStyleRED}
-                    x="745"
+                    x="735"
                     y="55"
                     width="450"
                     height="50"
