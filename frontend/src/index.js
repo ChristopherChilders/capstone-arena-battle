@@ -13,12 +13,6 @@ const store = middleware(createStore);
 const middlewareStore = store(reducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(<Router><Provider store={middlewareStore}><App /></Provider></Router>, document.getElementById('root'));
 
-// import { createStore } from 'redux';
-// // const store = createStore(
-// //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), reducers)
-// // ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, document.getElementById('root'));
-// ReactDOM.render(<App />, document.getElementById('root'));
-
 
 
 // If you want your app to work offline and load faster, you can change

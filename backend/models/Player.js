@@ -19,8 +19,7 @@ class Player {
         
         .then((data) => {
             
-            // getting to here
-            console.log("data.email", data.email);
+            // console.log("data.email", data.email);
             
             return data;
             

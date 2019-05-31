@@ -12,10 +12,6 @@ async function logIn(req, res) {
 }
 
 async function loginPlayer(req, res) {
-    console.log("please work");
-    console.log("=================");
-    
-    console.log(req.body);
 
 
     const theUser = await Player.getByEmail(req.body.email);
