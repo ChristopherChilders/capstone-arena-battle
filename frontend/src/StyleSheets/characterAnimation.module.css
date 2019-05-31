@@ -1,0 +1,19 @@
+@keyframes Attack1{
+    0% {
+        left: 0;
+        top: 0;
+    }
+    50% {
+        left: 100px;
+        top: -100px;
+    }
+    100%{
+        left: 200px;
+        top: 0;
+    }
+}
+
+.FirstAttack{
+    animation: Attack1;
+    animation-duration: 2s;
+}

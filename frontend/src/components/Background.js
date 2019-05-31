@@ -5,6 +5,7 @@ import notVictor from '../Images/NOTvictor.png';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
+import CharacterAnimation from './CharaterAnimation';
 
 class Background extends React.Component{
     constructor(props){
@@ -19,7 +20,8 @@ class Background extends React.Component{
             targets: '',
             startHealth: 1,
             start: false,
-            end: false
+            end: false,
+            animation: false
         }
     }
       componentDidMount(){
@@ -93,8 +95,12 @@ class Background extends React.Component{
 
         <svg  width="1300" height="925" >
                 <image x="5" y="5" width="1200" height="900"href={stickImage}/>
+                    
                     <image x="500" y="100" width="75%" height="75%" href={sicklyCobald} />
+                    
+                   
                     <image x="-220" y="100" width="75%" height="75%" href={notVictor} />
+                   
                 <rect style={healthStyleRED}
                 x="15"
                 y="55"
@@ -114,8 +120,9 @@ class Background extends React.Component{
             <button onClick={this._gameStart}>START</button>
         </div>
         <div>
-            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
-            </div>
+            <AttackButton  show={this.state.animation} /*closed={this._stopAnimation}*/ name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
+            <CharacterAnimation />
+        </div>
     </div>
     )
     }
@@ -203,6 +210,18 @@ class Background extends React.Component{
             )
         }
         
+    }
+
+    _startAnimation = () =>{
+        this.setState({
+            animation: true
+        })
+    }
+
+    _stopAnimation = () =>{
+        this.setState({
+            animation: false
+        })
     }
 }
 

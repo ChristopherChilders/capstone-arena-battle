@@ -36,8 +36,8 @@ values
 insert into attacks 
 (characters_id, name, summary, damage, abilities, targets)
 values 
-(1, 'kick', 'kicks target', 20, '', 'enemy'),
-(1, 'punch', 'punches target', 10, '', 'enemy'),
+(1, 'body slam', 'body slams target', 20, '', 'enemy'),
+(1, 'tackle', 'tackles target', 10, '', 'enemy'),
 (2, 'kick', 'kicks target', 20, '', 'enemy'),
 (2, 'punch', 'punches target', 10, '', 'enemy'),
 (3, 'kick', 'kicks target', 20, '', 'enemy');

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+// import animations from '../StyleSheets/CharacterAnimations';
 
 export default function playerOneComponent({newHealth}) {
     
