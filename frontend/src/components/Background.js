@@ -5,7 +5,7 @@ import notVictor from '../Images/NOTvictor.png';
 import PlayerOneComponent from './playerOneComponent';
 import Opponents from './Opponent';
 import AttackButton from './AttackButton';
-
+import style from '../StyleSheets/Buttons.module.css'
 class Background extends React.Component{
     constructor(props){
         super(props);
@@ -89,7 +89,7 @@ class Background extends React.Component{
         // console.log(this.state.damage)
       return (
           
-    <div>
+    <div className={style.gameplay}>
 
         <svg  width="1300" height="925" >
                 <image x="5" y="5" width="1200" height="900"href={stickImage}/>
@@ -110,12 +110,15 @@ class Background extends React.Component{
             <PlayerOneComponent  newHealth={this.state.characterLife1} />
             <Opponents newHealth={this.state.opponentLife1}/>
         </svg>
-        <div>
-            <button onClick={this._gameStart}>START</button>
-        </div>
-        <div>
-            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
+        <div className={style.allButtons}>
+            <div>
+                <button 
+                onClick={this._gameStart}
+                className={style.startButton}
+                >START</button>
             </div>
+            <AttackButton  name={this.state.character1Attack1Name} doDamage1={this._setFirstAttack} doDamage2={this._setSecondAttack}  name2={this.state.character1Attack2Name}/>
+        </div>
     </div>
     )
     }
