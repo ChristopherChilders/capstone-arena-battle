@@ -32,6 +32,7 @@ class Background extends React.Component{
         this.connection = new WebSocket(url);
         this.connection.onmessage = (e) => {
         let newData =JSON.parse(e.data);
+        console.log(e)
             this.setState({
     
                 chosenAttack:0,

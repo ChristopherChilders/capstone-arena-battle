@@ -58,7 +58,8 @@ wss.on('connection', async (socket) => {
     socket.send(JSON.stringify(data));
     // { {object: array}, {object: array}, {object: array} }
     // Then we send "data" from our database to our react app
-    socket.send(data);
+    // socket.send(data);
+    // console.log(data)
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
         // console.log(`recieved: %s`, message);
