@@ -6,6 +6,7 @@ import styles from '../StyleSheets/Buttons.module.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import  Embroider  from '../Images/TitleEmbroider.png'
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -54,6 +55,7 @@ class Login extends React.Component{
                     Submit
                     </button>
                     </div>
+                    <img src= {Embroider} alt=''></img>
                 </div>
                 </form>
                 </div>
