@@ -16,7 +16,6 @@ class Registration extends React.Component{
     }
     render() {
         if(this.props.register){
-            console.log("this.props.id", this.props.id);
             
             return(
                 <div>
@@ -69,13 +68,11 @@ class Registration extends React.Component{
         }
     }
     onChange = (e) => {
-        console.log("handleChange", e.target.value);
         
         this.setState({
             [e.target.id]:e.target.value,
             [e.target.id]: e.target.value,
             [e.target.id]: e.target.value,
-            // createdAt:''
         })
     }
     handleSubmit = (e) => {

@@ -7,7 +7,7 @@ export default async (userData) =>{
         method : "POST",
         data : userData
     })
-    console.log("data", userData)
+    // console.log("data", userData)
     return{
         type: "REGISTRATION_ACTION",
         payload : data

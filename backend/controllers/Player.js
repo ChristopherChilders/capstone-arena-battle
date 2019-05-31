@@ -3,7 +3,7 @@ const Player = require('../models/Player');
 async function deletePlayer (req, res) {
     const { id } = req.params;
     await Player.delete(id);
-    console.log(`player with id: ${id} was deleted.`);
+    // console.log(`player with id: ${id} was deleted.`);
 }
 
 async function retrieveOne(req, res){

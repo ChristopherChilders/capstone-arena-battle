@@ -30,12 +30,12 @@ const logInRouter = require('./routes/login');
 app.use('/login', logInRouter);
 
 app.post('/login', (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
 }) 
 const registrationRouter = require('./routes/registration');
 app.use('/registration', registrationRouter);
 app.post('/registration', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
 })
 
 const server = http.createServer(app);
@@ -46,7 +46,7 @@ const wss = new WebSocket.Server({
 });
 
 wss.on('connection', async (socket) => {
-    console.log('new connection');
+    // console.log('new connection');
     const attack = await Attack.getAll();
     const player = await Player.getAll();
     const characters = await Characters.getAll();
@@ -61,7 +61,7 @@ wss.on('connection', async (socket) => {
     socket.send(data);
     socket.on('message', (data) => {
         const { message } = JSON.parse(data);
-        console.log(`recieved: %s`, message);
+        // console.log(`recieved: %s`, message);
         wss.clients.forEach((client) => {
             if(client.readyState === WebSocket.OPEN){
                 client.send(JSON.stringify(db));
@@ -71,6 +71,5 @@ wss.on('connection', async (socket) => {
 });
 
 server.listen(PORT, ()=> {
-    console.log('you can do this, Chris! No, he cannot');
 
 })

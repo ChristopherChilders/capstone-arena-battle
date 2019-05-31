@@ -31,9 +31,7 @@ class Background extends React.Component{
         const url = `ws://localhost:4000/ws`;
         this.connection = new WebSocket(url);
         this.connection.onmessage = (e) => {
-        // console.log(e.data);
         let newData =JSON.parse(e.data);
-        console.log(newData)
             this.setState({
     
                 chosenAttack:0,
@@ -90,11 +88,9 @@ class Background extends React.Component{
         const healthStyleRED = {
             stroke:'black',
             strokeWidth: '2',
-            // strokeOpacity:"0.5",
             fill: 'red',
             fillOpacity: '100',
         };
-        // console.log(this.state.damage)
       return (
           
 
@@ -139,11 +135,8 @@ class Background extends React.Component{
     _setFirstAttack=()=>{
         if (this.state.start){
 
-            console.log("_setFirstAttack was called");
-            // let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack1Damage
-            // console.log('damange calculation')
+            // console.log("_setFirstAttack was called");
             this.setState({
-                // opponentLife1: currentOpponentHealth,
                 player1Attack:true,
                 opponent1Attack:true
             },()=>{setTimeout(this._monsterAttack,300)},this._endGame)
@@ -152,10 +145,8 @@ class Background extends React.Component{
     
     _setSecondAttack=()=>{
         if (this.state.start){
-            console.log("_setSecondAttack was called");
-            console.log(this.state.character1Attack2Name)
+            // console.log("_setSecondAttack was called");
             let currentOpponentHealth = this.state.opponentLife1-this.state.character1Attack2Damage
-            // console.log('damange calculation')
             this.setState({
                 opponentLife1: currentOpponentHealth,
                 player1Attack:true,
@@ -181,7 +172,6 @@ class Background extends React.Component{
             array[randomIndex] = temporaryValue;
             }
             
-            console.log(array);
             return array;
         }
         shuffle(attackArray)
@@ -204,7 +194,6 @@ class Background extends React.Component{
 
     _endGame=()=>{
         if (this.state.characterLife1<= 1){
-            console.log('look at me, currentHealth Check <1')
             this.setState({
                 end: true
             },
@@ -216,7 +205,6 @@ class Background extends React.Component{
             )
         }
         if (this.state.opponentLife1<= 1){
-            console.log('look at me, currentHealth Check <1')
             this.setState({
                 end: true
             },

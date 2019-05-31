@@ -63,7 +63,7 @@ class Login extends React.Component{
     }
 
     handleChange = (e) => {
-        console.log("handleChange", e.target.value)
+        // console.log("handleChange", e.target.value)
         this.setState({
             [e.target.id]: e.target.value,
             [e.target.id]:e.target.value
@@ -75,7 +75,7 @@ class Login extends React.Component{
             email:this.state.email,
             password: this.state.password
         })
-        console.log("handleSubmit", this.state.email, this.state.password);
+        // console.log("handleSubmit", this.state.email, this.state.password);
         
     }
 }

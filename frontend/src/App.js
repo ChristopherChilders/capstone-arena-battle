@@ -17,7 +17,6 @@ class App extends React.Component{
           <div >
             <Route exactly component={Login} path="/login"/>
                   <Route exact path="/mainmenu" component={MainMenu}/>
-                  {/* <Route exact path="/game" component={GamePage} /> */}
                   <Route exact component={Registration} path="/registration"/>
                   
           </div>
